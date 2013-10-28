@@ -1,0 +1,407 @@
+<div class="row-fluid">
+	<div class="span12">
+		<div class="tabbable tabbable-custom">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#Resreg" data-toggle="tab">注册资源</a></li>
+				<li class=""><a href="#Resedit" data-toggle="tab">编辑菜单资源</a></li>
+				<li class=""><a href="#Pageedit" data-toggle="tab">编辑页面资源</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="Resreg" class="tab-pane active">
+					<div class="row-fluid">
+					    <div class="pull-left" style="padding:10px 14px">
+					        <h4>
+					            资源注册
+					        </h4>
+
+					    </div>
+
+					</div>
+
+					<form action="" class="form-horizontal" id="resReg-Form" method="get">
+					 
+					    <div class="control-group">
+					 
+					    <label class="control-label">所属目录<span class="required">*</span></label>
+
+					        <div class="controls">
+					            <div class="input-icon left">
+					            <i class="icon-file-text"></i>
+					            <select class="span4 m-wrap" name="superResourceId" id="menulist">
+					                <option value="">--新增主模块--</option>                   
+					            </select>
+					            </div>
+					        </div>
+
+					    </div>
+
+					    <div class="control-group">
+					 
+					        <label class="control-label" id="resNameVal">菜单名称</label>
+					 
+					        <div class="controls">
+					            
+					            <div class="input-icon left">
+					                <i class="icon-tasks"></i>
+
+					                <input type="text" id="setting_qtip_username" name="resourceName" class="span4 m-wrap" value="" />
+
+					            </div>
+					 
+					        </div>
+
+					    </div>   
+					    
+					    <div class="control-group" id="pathinfo" style="display:none">
+					 
+					        <label class="control-label">路径<span class="required">*</span></label>
+					 
+					        <div class="controls">
+					 
+					             <div class="input-icon left">
+					 
+					                <i class="icon-folder-close"></i>
+					 
+					                <input class="span4 m-wrap" placeholder="即模块目录，如：DigiM/" name="resourceDescribe" type="text" />    
+					            </div>
+					 
+					        </div>
+					 
+					    </div>
+					    
+					    <div class="control-group" id="resicon">
+					 
+					        <label class="control-label">主目录图标<span class="required">*</span></label>
+					 
+					        <div class="controls">
+					            <div class="input-icon left">
+					            <i class="icon-file-text"></i>
+					            
+					            <input type="text" placeholder="去bootstrap图标库挑选个性图标" name="resourceIcon" class="span4 m-wrap">
+					            <p class="help-block">
+					                注：此处填写的是图标的class值，参考boostrap的icon列表.如:icon-cogs、icon-briefcase
+					            </p>
+					            </div>
+					        </div>
+
+					     </div>
+
+					    <div class="control-group" id="filename" style="display:none;">
+					 
+					        <label class="control-label">页面文件名<span class="required">*</span></label>
+					 
+					        <div class="controls">
+
+					            <div class="input-icon left">
+
+					            <i class="icon-file-text"></i>
+					            
+					            <input type="text" placeholder="页面的文件名。如：puchase" name="resourceCode" class="span4 m-wrap">
+
+					            </div>
+					        </div>
+
+					     </div>
+
+					     <div class="control-group">
+					 
+					        <label class="control-label">资源类型ID<span class="required">*</span></label>
+					 
+					        <div class="controls">
+
+					            <div class="input-icon left">
+
+					            <i class="icon-file-text"></i>
+					            
+					            <input type="text" name="resourceTypeId"  id="restype" class="span1 m-wrap" readonly="readonly" value="1">
+					            </div>
+					        </div>
+
+					     </div>
+					                      
+					    <div class="form-actions">
+					                                     
+					        <button class="btn blue" id="resregBtn">提交</button>
+					        <input type="reset" class="btn" value="重置" />
+
+					    </div>
+					</form>
+				</div>
+
+				<div id="Resedit" class="tab-pane">
+					<div class="row-fluid">
+					    <div class="span12">
+					        <div style="padding:10px 14px">
+					            <h4>
+					                选择一个菜单
+					            </h4>
+
+					        </div>
+					        
+					        <form action="" class="form-horizontal">
+					            <div class="control-group">
+					         
+					            <label class="control-label">选择菜单<span class="required">*</span></label>
+
+					                <div class="controls">
+					                    
+					                    <select class="span5 m-wrap" name="resourceId" id="reslist">
+					                        <option value="">--请选择--</option>                     
+					                    </select>
+
+					                    <button class="btn red">删除</button>
+					                </div>
+
+					            </div>
+					        </form>
+
+					    </div>
+
+					</div>
+					<div class="row-fluid">
+						<div class="span12" id="resInfo">
+					        <!--资源详细信息放置处-->
+					    </div>
+					</div>
+				</div>
+	
+				<div id="Pageedit" class="tab-pane">
+
+					<div class="row-fluid">
+
+						<div class="span12">
+
+							<div style="padding:10px 14px">
+					            <h4>
+					                选择一个页面资源
+					            </h4>
+
+					        </div>
+
+							<form action="" class="form-horizontal">
+					            <div class="control-group">
+					         
+					            <label class="control-label">选择一个页面<span class="required">*</span></label>
+
+					                <div class="controls">
+					                    
+					                    <select class="span5 m-wrap" name="resourceId" id="pagelist">
+					                        <option value="">--请选择--</option>                     
+					                    </select>
+
+					                    <button class="btn red">删除</button>
+
+					                </div>
+
+					            </div>
+
+
+					        </form>
+						</div>
+
+					</div>
+					<div class="row-fluid">
+						<div class="span12" id="pageInfo">
+							
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+	
+		var urlfix ="<%=urlfix%> ";        
+        var urljasonfix = eval(urlfix);
+
+        handleUniform();//表单美化插件
+	    
+	    /***注册资源JS***/
+
+	    //获取菜单资源列表
+	    if(!urljasonfix.menulist){
+	        urljasonfix.menulist =
+	        [{
+	            "ra":"menulist",
+	            "dir":"Res/BI/resList",
+	            "dif":'resource/listMenus',
+	            "p":{"resourceTypeId":"1"},
+	            "m":"2"
+	        }];
+	    }
+	    yixunload(urljasonfix.menulist,urlfix);
+
+	    //菜单资源的事件响应
+	    $("#menulist").change(function(){
+	        var resid = $(this).val();
+	        if(resid == ''){
+	            $("#resicon").show('400');
+	            $("#filename").hide('600');
+	            $("#pathinfo").hide("800");
+	            $("#resNameVal").text("目录名称");
+	            $("#restype").val("1");
+	        } else {
+	            var tag = $(this).find("option:selected").attr("tag");
+	            if(tag == 'dir'){
+	                $("#filename").hide('600');
+	                $("#resicon").hide('400');
+	                $("#restype").val("1");
+	                $("#pathinfo").hide("800");
+	                $("#resNameVal").text("目录名称");
+	            } else if(tag == 'page'){
+	                $("#filename").show('600');
+	                $("#resicon").hide('400');
+	                $("#restype").val("2");
+	                $("#pathinfo").show("800");
+	                $("#resNameVal").text("页面名称");
+	            }
+	            return;
+	        }
+
+	    })
+
+	    //资源注册提交
+	    $("#resregBtn").click(function(){
+	        if($("#resReg-Form").valid()){
+	            $('#resReg-Form').submit(function() {
+	                alert('ok');
+	                var data = $(this).serialize(); //序列化表单数据 
+	                console.log(data);
+	                //return false;
+	                $.getJSON(
+	                    "http://10.188.192.200:8080/YIXUN_1.5_EE/resource/addResource?jsoncallback=?",data,
+	                    function(json) {
+	                        console.log(json);
+	                        if(json.resultCode){
+		                        App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+		                    } else {
+		                        App.ajaxblockUI('error','系统错误',setTimeout($.unblockUI, 2000));
+		                    }
+	                    }
+	                ); 
+	                return false; 
+	            }); 
+	        }
+	    })
+	    
+
+	    //资源注册验证
+	    $('#resReg-Form').validate({
+	        rules: {
+	            resourceName: {
+	                required:true
+	            },
+	            resourceDescribe: {
+	                required:true
+	            },
+	            resourceCode: {
+	                required:true
+	            }
+
+	        },
+	        messages: {
+	            resourceName: {
+	                required:"资源名称必填"
+	            },
+	            resourceDescribe: {
+	                required:"菜单目录必填"
+	            },
+	            resourceCode: {
+	                required:"页面文件名必填"
+	            }
+	        },
+	        highlight: function (element) { // hightlight error inputs
+	            $(element)
+	                .closest('.control-group').addClass('error'); // set error class to the control group
+	        },
+
+	        success: function (label) {
+	            label.closest('.control-group').removeClass('error');
+	            label.remove();
+	        },
+	        errorPlacement: function (error, element){
+	            error.addClass('text-error').insertAfter(element.parent());
+	        },
+	    })
+
+		/***编辑菜单资源JS***/
+        
+        //获取菜单资源列表
+         if(!urljasonfix.reslist){
+            urljasonfix.reslist =
+            [{
+                "ra":"reslist",
+                "dir":"Res/BI/resList",
+                "dif":'resource/listMenus',
+                "p":{"resourceTypeId":"1"},
+                "m":"2"
+            }];
+        }
+        yixunload(urljasonfix.reslist,urlfix);
+
+        //选择一个菜单的响应事件
+        $("#reslist").change(function(){
+            
+            var resid = $(this).val();
+            urljasonfix.resInfo =
+            [{
+                "ra":"resInfo",
+                "dir":"Res/BI/resInfo",
+                "dif":'resource/getResourceByResourceId',
+                "p":{"resourceId":resid},
+            }];
+            yixunload(urljasonfix.resInfo,urlfix);
+
+            
+            var tag = $(this).find("option:selected").attr("tag");
+
+            if(tag == 'dir'){
+                $("#resicon_edit").show('400');
+                $("#restype_edit").val("1");
+            } else if(tag == 'page'){                
+                $("#resicon_edit").hide('400');
+                $("#restype_edit").val("2");                
+            }
+            return;
+
+        })
+
+        /***编辑页面资源JS***/
+
+        //获取菜单资源列表
+         if(!urljasonfix.pagelist){
+            urljasonfix.pagelist =
+            [{
+                "ra":"pagelist",
+                "dir":"Res/BI/pageList",
+                "dif":'resource/listResourcesByType',
+                "p":{"resourceTypeId":"2"},
+                "m":"2"
+            }];
+        }
+        yixunload(urljasonfix.pagelist,urlfix);
+
+        $("#pagelist").change(function(){
+            
+            var resid = $(this).val();
+            urljasonfix.pageInfo =
+            [{
+                "ra":"pageInfo",
+                "dir":"Res/BI/pageInfo",
+                "dif":'resource/getResourceByResourceId',
+                "p":{"resourceId":resid},
+            }];
+            yixunload(urljasonfix.pageInfo,urlfix);
+
+            return;
+
+        })
+
+
+
+});
+</script>

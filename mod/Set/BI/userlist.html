@@ -1,0 +1,9 @@
+<% for(var i = 0;i<serverdata.length;i++){ %>
+<label class="checkbox">
+    <input type="checkbox" name="userId" value="<%=serverdata[i].userId%>" />
+    <%=serverdata[i].userName%>
+</label>
+<%}%>
+<script type="text/javascript">
+    handleUniform();
+</script>

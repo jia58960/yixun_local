@@ -1,0 +1,50 @@
+<div class="portlet box blue">
+	<div class="portlet-title">
+		<div class="caption"><i class="icon-globe"></i>大物品列表</div>
+		<div class="actions"> <a class="btn yellow" href="javascript:;" id="addBN" data-toggle="modal"><i class="icon-plus"></i> 新增物品</a>
+			<div class="btn-group"> <a class="btn" href="#" data-toggle="dropdown"> 查看其它列数据 <i class="icon-angle-down"></i> </a>
+				<div id="yx_table_column_toggler_1" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+					<label>
+						<input type="checkbox" checked data-column="0">
+						ID</label>
+					<label>
+						<input type="checkbox" checked data-column="1">
+						Browser</label>
+					<label>
+						<input type="checkbox" checked data-column="2">
+						Platform(s)</label>
+					<label>
+						<input type="checkbox" checked data-column="3">
+						Engine version</label>
+					<label>
+						<input type="checkbox" checked data-column="4">
+						CSS grade</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<div class="row-fluid">
+		<a class="btn green" data-toggle="modal" id="modal_ajax_demo">View Demo</a>
+		<div id="modal_area" class="modal hide fade" data-keyboard="false" data-backdrop="static" tabindex="-1"></div>
+
+			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover dataTable" id="<%=dtdiv%>">
+				<thead>
+					<tr>
+						<th width="20%">Rendering engine</th>
+						<th width="25%">Browser</th>
+						<th width="25%">Platform(s)</th>
+						<th width="15%">Engine version</th>
+						<th width="15%">CSS grade</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+	handleModal('#modal_ajax_demo','#modal_area','./mod/DigiM/BI/purNew.html');
+
+</script>

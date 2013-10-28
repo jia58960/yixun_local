@@ -1,0 +1,74 @@
+<div class="portlet">
+
+		<div class="portlet-title line">
+
+			<div class="caption"><i class="icon-comments"></i><%=chats%></div>
+
+			<div class="tools">
+
+				<a href="" class="collapse"></a>
+
+				<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+				<a href="" class="reload"></a>
+
+				<a href="" class="remove"></a>
+
+			</div>
+
+		</div>
+
+		<div class="portlet-body" id="chats">
+
+			<div class="scroller" data-height="435px" data-always-visible="1" data-rail-visible1="1">
+
+				<ul class="chats">
+					<% for (var i = 0, l = chats_data.length; i < l; i++) { %>
+					<li class="<%=chats_data[i].position%>">
+
+						<img class="avatar" alt="" src="<%=chats_data[i].avater%>" />
+
+						<div class="message">
+
+							<span class="arrow"></span>
+
+							<a href="#" class="name"><%=chats_data[i].name%></a>
+
+							<span class="datetime"><%=chats_data[i].time_stamp%></span>
+
+							<span class="body">
+
+							<%=chats_data[i].content%>
+
+							</span>
+
+						</div>
+
+					</li>
+					<%}%>
+
+				</ul>
+
+			</div>
+
+			<div class="chat-form">
+
+				<div class="input-cont">   
+
+					<input class="m-wrap" type="text" placeholder="Type a message here..." />
+
+				</div>
+
+				<div class="btn-cont"> 
+
+					<span class="arrow"></span>
+
+					<a href="" class="btn blue icn-only"><i class="icon-ok icon-white"></i></a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>

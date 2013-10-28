@@ -1,0 +1,96 @@
+<!--
+Author  : zhangjia
+Date    : 20131014
+Describe: userinfo
+-->
+<div class="row-fluid">
+    <div class="pull-left" style="padding:10px 14px">
+        <h4>
+            页面权限设置
+        </h4>
+
+    </div>
+
+</div>
+
+<form action="" class="form-horizontal" id="pagePerSet-Form">
+ 
+    <div class="control-group">
+ 
+        <label class="control-label">页面名</label>
+ 
+        <div class="controls">
+            
+            <div class="input-icon left">
+                <i class="icon-tasks"></i>
+
+                <select name="resourceId" id="pagelist">
+                    
+                </select>
+
+            </div>
+ 
+        </div>
+
+    </div>  
+
+    <div class="control-group">
+ 
+    <label class="control-label">权限名<span class="required">*</span></label>
+
+        <div class="controls">
+            <div class="input-icon left">
+                <i class="icon-file-text"></i>
+                <input type="text" name="permissionName" />
+            </div>
+        </div>
+
+    </div>
+                      
+    <div class="form-actions">
+                                     
+        <button class="btn blue" id="resregBtn">提交</button>
+        <input type="reset" class="btn" value="重置" />
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    
+$(document).ready(function() {
+
+    var urlfix = "<%=urlfix%>";
+
+    var urljasonfix = eval(urlfix);
+    
+    if(!urljasonfix.pagelist){
+        urljasonfix.pagelist =
+        [{
+            "ra":"pagelist",
+            "dir":"Per/BI/pageList",
+            "dif":'resource/listResourcesByType',
+            "p":{"resourceTypeId":"2"},
+        }];
+    }
+
+    yixunload(urljasonfix.pagelist,urlfix);
+    
+    $("#resregBtn").click(function(){
+        $('#pagePerSet-Form').submit(function() {
+            alert('ok');
+            var data = $(this).serialize(); //序列化表单数据 
+            console.log(data);
+            //return false;
+            $.getJSON(
+                "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/addPageToPermission?jsoncallback=?",data,
+                function(json) {
+                    console.log(json);
+                }
+            ); 
+            return false; 
+        }); 
+    })   
+
+}); 
+ 
+</script>

@@ -1,0 +1,18 @@
+<!--
+Author  : hmm
+Date    : 20130923
+Describe: deptlist_module
+-->
+<% for (var i = 0, l = serverdata.length; i < l; i++) { %>
+
+    <li><a href="javascript:;" data-toggle="tab" id="<%=serverdata[i].departmentId%>"><%=serverdata[i].departmentName%></a></li>
+
+<% } %>
+<script type="text/javascript">
+	var urlfix = <%=urlfix%> ;
+	var flag = urlfix.p.deptId;
+
+	//$("#deptlist li a").attr('id') ==flag
+    $("a[id="+flag+"]").parent("li").addClass("active");
+</script>
+

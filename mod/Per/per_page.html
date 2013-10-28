@@ -1,0 +1,51 @@
+<div class="row-fluid">
+	<div class="span12">
+		<div class="tabbable tabbable-custom">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#perPageReg" data-toggle="tab">页面权限设置</a></li>
+				<li class=""><a href="#xxx" data-toggle="tab">页面权限修改</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="perPageReg" class="tab-pane active">
+					
+				</div>
+				<div id="xxx" class="tab-pane">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		
+		//return;
+
+		var urlfix ="<%=urlfix%> ";
+        //console.log(urlfix);
+        var urljasonfix = eval(urlfix);
+
+        if(!urljasonfix.perPageReg){
+            urljasonfix.perPageReg =
+            [{
+            	"ra":"perPageReg",
+                "dir":"Per/BI/pagePerSet",
+                "dif":'',
+            }];
+        }
+        
+        yixunload(urljasonfix.perPageReg,urlfix);
+
+        /*if(!urljasonfix.perPageEdit){
+            urljasonfix.perPageEdit =
+            [{
+            	"ra":"perPageEdit",
+                "dir":"Res/BI/xxx",
+                "dif":'',
+            }];
+    	}
+        yixunload(urljasonfix.perPageEdit,urlfix);*/
+
+
+	});
+</script>

@@ -1,0 +1,110 @@
+<% 
+for (var i = 0, l = serverdata.length; i < l; i++) { %>
+	<li>
+        <a href="javascript:;" id="<%=serverdata[i].yxResourceBySublevelResourceId.resourceId%>" para='{"id":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceId%>","dir":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceDescribe%>","code":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceCode%>"}'>
+        <%=serverdata[i].yxResourceBySublevelResourceId.resourceName%>
+        	<span class=""></span>
+        </a>
+
+    </li>
+<% } %>
+
+<script type="text/javascript">
+
+       $(".hor-menu .navbar-inner").on('click',' ul >li a',function (e) {
+            e.preventDefault();
+            App.scrollTop();
+            
+            var label = $(this).html();
+                //var modulename = $(this).attr('modulename');
+            var paras = $(this).attr('para');
+            var subParas = $.parseJSON(paras);
+            
+            var url = subParas.dir + subParas.code;
+
+            var menuContainer = jQuery('.hor-menu .navbar-inner ul');
+            var pageContent = $('.page-content');
+            //var tabs = $("#tabs-container");
+            
+            menuContainer.children('li.active').removeClass('active');
+            menuContainer.children('span.selected').removeClass('selected');
+            $(this).parents('li').each(function () {
+                $(this).addClass('active');
+                $(this).find('span').addClass('selected');
+            });
+            
+            $(this).parents('li').addClass('active');
+            
+            //submenu
+            urlJSON.sub_m[0].p2.subid = subParas.id;
+            flushurl();
+
+            //sub header
+            /*urlJSON.sub_h[0].p.modulename = parasJson_sub.modulename;
+            urlJSON.sub_h[0].p.subname = parasJson_sub.subname;
+            flushurl();*/
+
+            App.blockUI(pageContent, false);
+            
+            //加载当前点击的模块
+            urlJSON.dashboard =
+                [{
+                    "ra":"dashboard",
+                    "dir":url,
+                    "dif":''
+                }];
+
+            yixunload(urlJSON.dashboard,"urlJSON");
+
+            //调入当前模块的head
+            /*var subhead =[{
+                "ra":"sub_h",
+                "dir":"Com/subhead",
+                "dif":'',
+                "p":{"modulename":parasJson_sub.modulename,"subname": parasJson_sub.subname}
+            }];
+            
+            yixunload(subhead,"urlJSON");
+             */
+            
+            App.unblockUI(pageContent);
+           
+            return false;
+        });
+        
+
+        //if(!urlJSON.dashboard) {
+        var paras = $("#sub_m li a").first().attr('para');
+        var parasJson = $.parseJSON(paras);
+        urlJSON.dashboard =
+        [{
+        "ra":"dashboard",
+        "dir":parasJson.dir+parasJson.code,
+        "dif":''
+        }];
+        urlJSON.sub_m[0].p.resourceId = parasJson.id;
+        flushurl();
+        //}
+        yixunload(urlJSON.dashboard,"urlJSON");
+
+        //子菜单响应URL样式
+        var subMenuflag = urlJSON.sub_m[0].p2.subid; //获取子菜单name
+        //console.log('ZZZZZZ'+subMenuflag);
+        if(!subMenuflag){
+            $("#sub_m li").first().addClass("active");
+            $("#sub_m li a").children("span").addClass("selected");
+        } else {
+            $("#sub_m li a[id="+subMenuflag+"]").parent("li").addClass("active");
+            $("#sub_m li a[id="+subMenuflag+"]").children("span").addClass("selected");
+        }
+
+        /*urlJSON.sub_h =[{
+            "ra":"sub_h",
+            "dir":"Com/subhead",
+            "dif":'',
+            "p":{"modulename":urlJSON.sub_m[0].p.modulename,"subname":urlJSON.sub_m[0].p.subname}
+        }];
+        
+        yixunload(urlJSON.sub_h,"urlJSON");*/
+
+</script>

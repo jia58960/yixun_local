@@ -1,0 +1,467 @@
+<!--
+Author  : zhangjia
+Date    : 20131014
+Describe: userinfo
+-->
+<div class="row-fluid">
+    <div class="pull-left" style="padding:10px 14px">
+
+        <h4>
+            
+            <% if (data.userinfo.name !== '') {%>
+                用户信息 - <%=data.userinfo.username%>
+            <%} else {%>
+                新增用户
+            <%}%>
+        </h4>
+
+    </div>
+
+    <div class="pull-right" style="padding:10px 14px">
+
+        <a class="btn icn-only green" id="userlistBtn" href="#"><i class="m-icon-swapleft m-icon-white"></i> 用户列表</a>                          
+
+    </div>
+
+</div>
+
+<form action="http://10.188.199.8:19999/yixun_local/proxy.php?url=http://10.188.192.200:8080/YIXUN_1.5_EE/department/addEmployee" id="addUserForm" class="form-horizontal">
+
+
+<h5 class="form-section">基本信息</h5>
+
+<div class="row-fluid">
+    
+    <div class="span6">
+        
+        <div class="control-group">
+ 
+        <label class="control-label">姓名<span class="required">*</span></label>
+ 
+            <div class="controls">
+                
+                <div class="input-icon left">
+
+                    <i class="icon-user"></i>
+
+                    <input type="text" name="employeeName" class="span10 m-wrap" value="<%=data.userinfo.name%>" />
+                </div>
+            </div>
+ 
+        </div>
+        
+    </div>
+    
+    <input type="hidden" name="employeeId" value="<%=data.userinfo.id%>" />
+
+    <div class="span6">
+        <div class="control-group">
+ 
+        <label class="control-label">用户名<span class="required">*</span></label>
+ 
+        <div class="controls">
+            
+            <div class="input-icon left">
+
+                <i class="icon-user"></i>
+
+                <input type="text" id="setting_qtip_username" name="userName" placeholder="可为姓名,用于系统登录" class="span10 m-wrap has_qtip" value="<%=data.userinfo.username%>" />
+
+            </div>
+        </div>
+ 
+    </div>
+
+    </div>
+
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="control-group">
+ 
+        <label class="control-label">入职时间<span class="required">*</span></label>
+ 
+        <div class="controls">
+            <div class="input-icon left">
+
+                <i class="icon-calendar"></i>
+
+                <input name="employeeJoinDate" placeholder="yyyy-MM-dd" class="span10 m-wrap date-picker"  style="cursor:pointer"  type="text" />
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="span6">
+        <div class="control-group">
+ 
+        <label class="control-label">性别<span class="required">*</span></label>
+ 
+        <div class="controls">
+ 
+            <label class="radio">
+ 
+                <input type="radio" name="yxSex" value="1" checked />
+ 
+                男
+ 
+                </label>
+ 
+            <label class="radio">
+ 
+                <input type="radio" name="yxSex" value="2" />
+ 
+                女
+ 
+                </label> 
+ 
+        </div>
+ 
+    </div>
+    </div>
+</div>
+    
+<div class="row-fluid">
+
+    <div class="span6">
+    <div class="control-group">
+ 
+        <label class="control-label">邮箱<span class="required">*</span></label>
+ 
+        <div class="controls">
+ 
+            <div class="input-icon left">
+ 
+                <i class="icon-envelope"></i>
+ 
+                <input class="span10 m-wrap has_qtip" id="setting_qtip_email" name="email" type="text" placeholder="" />    
+ 				<p class="help-block">
+     				注：请填写常用邮箱地址，若无邮箱由公司分配。
+     			</p>
+            </div>
+ 
+        </div>
+ 
+    </div>
+
+        
+    </div>
+
+    <div class="span6">
+
+        <div class="control-group">
+     
+            <label class="control-label">主手机<span class="required">*</span></label>
+     
+            <div class="controls">
+     
+                <input type="text" id="setting_qtip_mainmobile" placeholder="常用手机号且信息可达" name="employeeMobilePhoneMaster" class="has_qtip span10 m-wrap">
+     			<p class="help-block">
+     				注：该手机号将用于系统内部的重要信息提醒，请务必认真填写
+     			</p>
+            </div>
+     
+        </div>
+
+    </div>
+
+</div>
+                        
+<div class="row-fluid">
+
+    <div class="span12">
+        <div class="control-group">
+ 
+        <label class="control-label">生日</label>
+ 
+        <div class="controls">
+            <div class="input-icon left">
+
+                <i class="icon-calendar"></i>
+
+                <input name="employeeBirthday" class="span6 m-wrap date-picker" data-date-viewmode="years" placeholder="yyyy-MM-dd" type="text" style="cursor:pointer" />
+
+                <p class="help-block">
+     				注：请选择公历生日
+     			</p>
+
+            </div>
+        </div>
+ 
+    </div>
+    </div>
+</div>
+                        
+<div class="row-fluid">
+     <div class="span6">
+        <div class="control-group">
+                     
+        <label class="control-label">第一部门<span class="required">*</span></label> 
+                     
+        <div class="controls">
+                     
+            <select class="span10 m-wrap" name="firstDepartmentId" id="Setting_fdeptlist">
+                <input type="hidden" id="first_deptval" value="<%=data.userinfo.fdeptid%>" />                
+                     
+            </select>
+            
+        </div>
+                     
+    </div>
+    </div>
+
+    <div class="span6">
+        <div class="control-group">
+                     
+        <label class="control-label">职称<span class="required">*</span></label>
+                     
+        <div class="controls">
+                     
+            <select class="span10 m-wrap" name="firstPositionId">
+                     
+                <option value="">请选择</option>
+                     
+                <option value="Category 1">初级客户经理</option>
+                     
+                <option value="Category 2">高级客户经理</option>
+                     
+                <option value="Category 3">中级客户经理</option>
+                     
+            </select>
+                     
+        </div>
+                     
+    </div>
+    </div>
+
+</div>
+
+<div class="row-fluid">
+
+    <div class="span6">
+
+        <div class="control-group">
+                     
+        <label class="control-label">第二部门</label>
+                     
+            <div class="controls">
+                         
+                <select class="span10 m-wrap" name="secondDepartmentId" id="Setting_sdeptlist">
+
+                    <input type="hidden" id="second_deptval" value="<%=data.userinfo.sdeptid%>" />
+                         
+                </select>
+                         
+            </div>
+                     
+        </div>
+    </div>
+
+    <div class="span6">
+        <div class="control-group">
+                     
+        <label class="control-label">职称</label>
+                     
+            <div class="controls">
+                         
+                <select class="span10 m-wrap" name="secondPositionId">
+                         
+                    <option value="">请选择</option>
+                         
+                    <option value="Category 1">初级客户经理</option>
+                         
+                    <option value="Category 2">高级客户经理</option>
+                         
+                    <option value="Category 3">中级客户经理</option>
+                         
+                </select>
+                         
+            </div>
+                     
+        </div>
+    </div>
+
+</div>
+
+
+<h5 class="form-section">权限信息</h5>
+
+<div class="row-fluid">
+
+
+<div class="span6">
+    <div class="control-group">
+
+        <label class="control-label">角色<span class="required">*</span></label>
+
+        <div class="controls">
+
+            <input type="text" id="select2_sample5" name="roleId" class="span10 m-wrap">
+
+        </div>
+
+    </div>
+</div>
+
+<div class="span6">
+    <div class="control-group">
+
+    <label class="control-label">排序号<span class="required">*</span></label>
+
+    <div class="controls">
+
+        <input type="text" name="employeeSortNumber" class="span10 m-wrap">
+        
+
+    </div>
+
+</div>
+</div>
+
+</div>
+
+
+<h5 class="form-section">其他联系信息</h5>
+
+<div class="row-fluid">
+
+<div class="span6">
+
+        <div class="control-group">
+ 
+            <label class="control-label">手机2</label>
+ 
+            <div class="controls">
+     
+                <input type="text" name="employeeMobilePhoneSecond" class="span10 m-wrap">
+     
+            </div>
+ 
+        </div>
+       
+</div>
+<div class="span6">
+    <div class="control-group">
+     
+        <label class="control-label">手机3</label>
+
+        <div class="controls">
+ 
+            <input type="text" name="employeeMobilePhoneThird" class="span10 m-wrap">
+ 
+        </div>
+     
+    </div>
+</div>
+</div>
+    
+
+<div class="row-fluid">
+
+    <div class="span6">
+        <div class="control-group">
+     
+                <label class="control-label">座机1</label>
+     
+                <div class="controls">
+         
+                    <input type="text" name="employeeTelephone" class="span10 m-wrap">
+         
+                </div>
+     
+            </div>
+    </div>
+
+    <div class="span6">
+        <div class="control-group">
+     
+                <label class="control-label">座机2</label>
+     
+                <div class="controls">
+         
+                    <input type="text" name="employeeTelephoneSecond" class="span10 m-wrap">
+         
+                </div>
+     
+            </div>
+    </div>
+    
+</div>
+
+<div class="row-fluid">
+
+    <div class="span12">
+        <div class="control-group">
+     
+            <label class="control-label">座机3</label>
+ 
+            <div class="controls">
+     
+                <input type="text" name="employeeTelephoneThird" class="span5 m-wrap">
+     
+            </div>
+     
+        </div>
+    </div>
+
+    
+</div>
+
+                                                                 
+<div class="form-actions">
+                                 
+    <button class="btn blue"><% if (data.userinfo.name !== '') {%>保存<%} else {%>提交<%}%></button>
+    <input type="reset" class="btn" value="重置" />
+
+</div>
+                                             
+</form>
+<div id="response"></div>
+
+<script type="text/javascript">
+
+    handleUniform();//表单美化插件
+    handleDatePickers('.date-picker','');
+    $("#userlistBtn").on('click',function(){
+        $("#userinfo").removeClass('active');
+        $("#userlist").addClass('active');
+    })
+
+    //加载第一部门
+    /*yixunload({
+        render_area:'Setting_fdeptlist',
+        directory:'modules/SysSetting/BuildIn/deptlistTmpl',
+        dataInterface:'deptlistInterface' ,
+        para:{'deptid':$("#first_deptval").val()}
+    }); 
+
+    //加载第二部门
+    yixunload({
+        render_area:'Setting_sdeptlist',
+        directory:'modules/SysSetting/BuildIn/deptlistTmpl',
+        dataInterface:'deptlistInterface' ,
+        para:{'deptid':$("#second_deptval").val()}
+    })*/  
+
+    $("#select2_sample5").select2({
+        tags: [{"id":"1","text":"图书管理员"},{"id":"2","text":"晨珀会计"}, {"id":"3","text":"前台文员"}, {"id":"4","text":"出纳"}]
+    });
+
+    $(document).ready(function() {
+   // 使用 jquery 异步跨域提交表单 
+    $('#myForm1').submit(function() {
+        var data = $(this).serialize(); //序列化表单数据 
+        $.getJSON(
+            "http://www.baidu.com?callback=?", data,
+            function(json) {
+                console.log(json);
+                alert(json); 
+            }
+        ); 
+        return false; 
+    }); 
+}); 
+ 
+</script>

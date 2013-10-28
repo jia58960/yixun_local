@@ -1,0 +1,182 @@
+<div class="row-fluid">
+
+	<div class="span12">
+
+		<div id="form_wizard_1" class="portlet box blue">
+
+			<div class="portlet-title">
+
+				<div class="caption">
+
+					<i class="icon-reorder"></i> 接口分配
+
+				</div>
+
+			</div>
+
+			<div class="portlet-body">
+
+			<form action="" id="allot-form">
+				<div class="row-fluid">
+
+					<div class="span6">
+						<div class="control-group">
+
+							<label class="control-label">页面组：</label>
+
+							<div id="pages" class="controls">
+
+							</div>
+
+						</div>
+	
+					</div>
+
+					<div class="span6">
+						<div class="control-group">
+
+							<label class="control-label">接口组：</label>
+
+							<div id="infs" class="controls">
+							   
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<div class="form-actions">
+
+					<button class="btn blue" id="allot_btn"> 绑定</button>
+					<button class="btn red" id="remove_btn"> 解除</button>
+
+					<!-- <button class="btn" type="reset"> 重置</button> -->
+
+				</div>
+
+			</form>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		//表单美化
+		handleUniform();
+
+		var urlfix = "<%=urlfix%>";
+
+	    var urljasonfix = eval(urlfix);
+	    
+	    //获取页面
+	    if(!urljasonfix.pages){
+	        urljasonfix.pages =
+	        [{
+	            "ra":"pages",
+	            "dir":"Res/BI/pageAllot",
+	            "dif":'resource/listResourcesByType',
+	            "p":{"resourceTypeId":"2"},
+
+	        }];
+	    }
+
+	    yixunload(urljasonfix.pages,urlfix);
+
+	    //获取接口
+	    if(!urljasonfix.infs){
+	        urljasonfix.infs =
+	        [{
+	            "ra":"infs",
+	            "dir":"Res/BI/infAllot",
+	            "dif":'resource/listResourcesByType',
+	            "p":{"resourceTypeId":"3"},
+
+	        }];
+	    }
+	    yixunload(urljasonfix.infs,urlfix);
+
+		
+		//分配
+		$("#allot_btn").click(function(){
+			if($("#allot-form").valid()){
+			$("#allot-form").submit(function(){
+	        	alert('jinlaile');
+	        	var data = $(this).serialize(); //序列化表单数据 
+	        	console.log(data);
+	        	
+	        	$.getJSON(
+		            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/addResourcesToPages?jsoncallback=?",data,
+		            function(json){
+		            	console.log(json);
+		            	if(json.resultCode == 200){
+		            		App.ajaxblockUI(200,json.resultReason,setTimeout($.unblockUI, 2000));
+		            	}else{
+		            		App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI,2000)); 
+		            	}
+		            }
+		        ); 
+		        return false;
+	        })
+			}
+
+		})
+
+		//解除分配
+        $("#remove_btn").click(function(){
+        	if($("#allot-form").valid()){
+			$("#allot-form").submit(function(){
+	        	alert('jinlaile');
+	        	var data = $(this).serialize(); //序列化表单数据 
+	        	console.log(data);
+
+	        	$.getJSON(
+		            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/deleteResourcesFromPages?jsoncallback=?",data,
+		            function(json) {
+		            	console.log(json);
+		            	if(json.resultCode == 200){
+		            		App.ajaxblockUI(200,json.resultReason,setTimeout($.unblockUI, 2000));
+		            	}else{
+		            		App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI,2000)); 
+		            	}
+		            }
+		        ); 
+	        	return false;
+	        })
+		}
+
+		})
+
+
+		//表单验证
+		$("#allot-form").validate({
+			rules: {
+				resourceId: {
+					required: true,
+				},
+				pageId: {
+					required: true,
+				},
+			},
+
+			messages: {
+				resourceId: {
+					required: "必须选择接口来分配！",
+
+				},
+				pageId: {
+					required: "必须选择页面来分配！",
+
+				},
+			},
+
+            errorPlacement: function (error, element) {
+                error.addClass('text-error').insertAfter(element.parent().parent().parent().parent());
+            },
+		})
+
+	});
+</script>

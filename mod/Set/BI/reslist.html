@@ -1,0 +1,108 @@
+<table class="table table-striped table-bordered table-advance table-hover reslist_table">
+
+    <thead>
+
+        <tr>
+
+            <th><i class="icon-user"></i> 资源编号</th>
+
+            <th><i class="icon-user"></i> 资源名称</th>
+
+            <th><i class="icon-user"></i> 真实姓名</th>
+
+            <th><i class="icon-briefcase"></i> 职称</th>
+
+            <th><i class="icon-briefcase"></i> 角色</th>
+           
+            <th><i class="icon-briefcase"></i> 操作</th>
+            
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    <% var userData = data.userlistdata;
+    for (var k = 0, leng = userData.length; k < leng; k++) { %>
+        <tr>
+        <td><%=userData[k].sort%></td>
+        <td><a href="javascript:void(0);" class="userinfo" id="<%=userData[k].userid%>"><%=userData[k].username%></a></td>
+        <td><%=userData[k].name%></td>
+        <td><%=userData[k].zhicheng%></td>
+        <td><%=userData[k].role%></td>
+        <td>
+            <a para="<%=userData[k].userid%>" class="delete btn red mini" href="javascript:void(0);"><i class="icon-trash"></i> 删除</a> 
+            <a para="<%=userData[k].userid%>" class="resetpsw btn green mini" href="javascript:void(0);"><i class="icon-repeat"></i> 重置密码</a>
+        </td>
+        </tr>
+    <% } %>
+        
+    </tbody>
+
+</table>
+
+<script type="text/javascript">
+
+$(function(){
+
+    var urlfix =" <%=data.urlfix%> ";
+
+   $('.reslist_table').dataTable({
+        "bFilter":true,
+        "aLengthMenu": [
+            [5, 15, 20, -1],
+            ["5", "15", "20", "所有"] // change per page values here
+        ],
+        "bPaginate": true, //翻页功能
+        "iDisplayLength":5,
+        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+        "sPaginationType": "bootstrap",//翻页样式
+        
+        "bSort": true,//禁用排序功能
+    });
+    
+    //刷它的父级模块
+   
+
+    console.log(urljasonfix);
+    //查看员工基本信息
+        $(".userinfo").on('click',function(){
+
+            var userid = $(this).attr('id');
+            if(!userid) {userid = ""}
+            $("#userlist").removeClass('active');
+            $("#userinfo").addClass('active');
+            
+            if(!urljasonfix.userinfo){
+                urljasonfix.userinfo =
+                [{
+                    "ra":"userinfo",
+                    "dir":"Set/BI/userinfo",
+                    "dif":'',
+                    "p":{"userid":userid}
+                }];            
+            }
+            yixunload(urljasonfix.userinfo,urlfix);
+
+        })
+
+    //删除员工与清空员工密码
+    $(".delete").click(function(){
+        var userid = $(this).attr('para');
+        $.ajax({
+            url:'demo.php',
+            type:'post',
+            data:{"userid":userid},
+            success:function(data){
+                handleNoty('删除成功','success');
+            },
+            error:function(){
+                handleNoty('找不到接口','error');
+            }
+        })
+    });
+
+});
+    
+</script>
+       

@@ -1,0 +1,312 @@
+<form action="" class="form-horizontal" method="post">
+
+	<h4 class="form-section">基本信息</h4>
+
+	<div class="row-fluid">
+
+        <div class="span6">
+			<div class="control-group">
+
+			<label class="control-label">部门名称<span class="required">*</span></label>
+
+			<div class="controls">
+
+				<input type="text" name="dept_name" class="span10 m-wrap" value="<%=serverdata.departmentName%>">
+
+			</div>
+
+		</div>
+        </div>
+
+        <div class="span6">
+			<div class="control-group">
+
+			<label class="control-label">父级部门<span class="required">*</span></label>
+
+			<div class="controls">
+				<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
+
+					<option value="">请选择</option>
+
+					<option value="Category 1" selected="selected">综管中心</option>						
+
+					<option value="Category 1">总经理室</option>
+
+					<option value="Category 2">人力资源</option>
+
+					<option value="Category 3">IT部</option>
+
+				</select>
+
+				
+
+			</div>
+
+		</div>
+        </div>
+    </div>
+	
+	<div class="row-fluid">
+
+        <div class="span6">
+        	<div class="control-group">
+
+			<label class="control-label">部门颜色标识<span class="required">*</span></label>
+
+			<div class="controls">
+
+				<div class="input-append color colorpicker-default" data-color="#3865a8" data-color-format="rgba">
+
+					<input type="text" class="span5 m-wrap" value="<%=serverdata.departmentColor%>" readonly />
+
+					<span class="add-on"><i style="background-color: #3865a8;"></i></span>
+
+				</div>
+
+			</div>
+
+		</div>
+        </div>
+
+        <div class="span6">
+
+        	<div class="control-group">
+
+			<label class="control-label">部门排序号<span class="required">*</span></label>
+
+			<div class="controls">
+
+				<input type="text" name="dept_sort" class="span6 m-wrap" value="<%=serverdata.departmentSortNumber%>">
+
+			</div>
+
+		</div>
+        </div>
+    </div>
+	
+	<div class="row-fluid">
+
+        <div class="span12">
+			<div class="control-group">
+
+			<label class="control-label">部门简述</label>
+
+			<div class="controls">
+
+				<textarea class="span6 m-wrap" name="dept_resume" rows="3"><%=serverdata.departmentDescribe%></textarea>
+
+			</div>
+
+		</div>
+        </div>
+    </div>
+
+	 <h4 class="form-section">职位信息</h4>
+	
+	
+    <div class="row-fluid">
+
+        <div class="span6">
+        	<div class="control-group">
+		
+				<label class="control-label">部门副主管</label>
+		
+				<div class="controls">
+		
+					<select class="span10 m-wrap chosen" data-placeholder="请选择部门副主管" name="dept_parent" multiple="multiple">
+
+						<option value="">请选择</option>
+
+						<option value="Category 1" selected="selected">赖镇东</option>						
+
+						<option value="Category 1" selected="selected">陈万才</option>
+
+						<option value="Category 2">张佳</option>
+
+						<option value="Category 3">熊瑛琪</option>
+
+					</select>
+		
+				</div>
+		
+			</div>
+        </div>
+
+        <div class="span6">
+				<div class="control-group">
+		
+				<label class="control-label">部门主管</label>
+		
+				<div class="controls">
+		
+					<select class="span10 m-wrap chosen" data-placeholder="请选择部门主管" name="dept_parent" multiple="multiple">
+
+						<option value="">请选择</option>
+
+						<option value="Category 1" selected="selected">赖镇东</option>						
+
+						<option value="Category 1">陈万才</option>
+
+						<option value="Category 2">张佳</option>
+
+						<option value="Category 3">熊瑛琪</option>
+
+					</select>
+		
+				</div>
+		
+			</div>
+            </div>
+        </div>
+		
+		<div class="row-fluid">
+		
+            <div class="span6">
+            	<div class="control-group">
+		
+				<label class="control-label">部门直管1</label>
+		
+					<div class="controls">
+			
+						<select class="span10 m-wrap" name="dept_parent">
+							
+							 <option value="">请选择</option>
+							
+							<option value="Category 1" selected="selected">王乐</option>						
+							
+							<option value="Category 1">张轩樵</option>
+							
+							<option value="Category 2">余杰</option>
+							
+							<option value="Category 3">贺洁华</option>
+
+						</select>
+			
+					</div>
+		
+				</div>
+        	</div>
+
+        <div class="span6">
+			<div class="control-group">
+		
+				<label class="control-label">部门直管2</label>
+		
+				<div class="controls">
+		
+					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
+
+						<option value="" selected="selected">请选择</option>
+
+						<option value="Category 1">王乐</option>						
+
+						<option value="Category 1">张轩樵</option>
+
+						<option value="Category 2">余杰</option>
+
+						<option value="Category 3">贺洁华</option>
+
+					</select>
+		
+				</div>
+		
+			</div>
+        </div>
+    </div> 
+
+	<div class="row-fluid">
+	
+        <div class="span6">
+        	<div class="control-group">
+	
+			<label class="control-label">部门直管3</label>
+	
+				<div class="controls">
+		
+					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
+
+						<option value="">请选择</option>
+
+						<option value="Category 1" selected="selected">王乐</option>						
+
+						<option value="Category 1">张轩樵</option>
+
+						<option value="Category 2">余杰</option>
+
+						<option value="Category 3">贺洁华</option>
+
+					</select>
+		
+				</div>
+	
+			</div>
+    	</div>
+
+        <div class="span6">
+			<div class="control-group">
+		
+				<label class="control-label">部门直管4</label>
+		
+				<div class="controls">
+		
+					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
+
+						<option value="" selected="selected">请选择</option>
+
+						<option value="Category 1">王乐</option>						
+
+						<option value="Category 1">张轩樵</option>
+
+						<option value="Category 2">余杰</option>
+
+						<option value="Category 3">贺洁华</option>
+
+					</select>
+		
+				</div>
+		
+			</div>
+        </div>
+	</div> 
+
+	<div class="row-fluid">
+		
+            <div class="span6">
+            	<div class="control-group">
+		
+				<label class="control-label">部门分管</label>
+		
+					<div class="controls">
+			
+						<select class="span10 m-wrap chosen" data-placeholder="部门分管" name="dept_parent" multiple="multiple">
+
+							<option value="">请选择</option>
+
+							<option value="Category 1">王乐</option>						
+
+							<option value="Category 1" selected="selected">张轩樵</option>
+
+							<option value="Category 2">余杰</option>
+
+							<option value="Category 3">贺洁华</option>
+
+							<option value="Category 4" selected="selected">董事长</option>																
+
+						</select>
+			
+					</div>
+		
+				</div>
+        	</div>
+
+    </div> 
+
+    <div class="form-actions">
+         
+        <button class="btn blue" type="submit">提交</button>
+                     
+        <button class="btn" type="button" id="btn_leave_cancel">取消</button>                            
+                     
+    </div>
+
+</form>

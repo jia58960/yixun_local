@@ -1,0 +1,50 @@
+<script id="userlist_tpl" type="text/html">
+<table class="table table-striped table-bordered table-hover">
+
+        <thead>
+
+            <tr>
+
+                <th><input type="checkbox" class="group-checkable" data-set="#sample_3 .checkboxes" /></th>
+
+                <th>姓名</th>
+
+                <th>姓别</th>
+
+                <th>邮箱</th>
+
+                <th>手机</th>
+
+                <th>操作</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+        	<% for (var i = 0, l = data.length; i < l; i++) { %>
+                <tr>
+
+                    <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                    <td><a href=""><%=data[i].name%></a></td>
+
+					<td><%=data[i].gender%></td>                    
+
+                    <td><%=data[i].email%></td>
+
+                    <td>13480657223</td>
+
+                    <td>
+                        <a class="btn mini green" href="#"><i class="icon-edit"></i> 编辑</a>
+                        <a class="btn mini red" href="#"><i class="icon-trash"></i> 删除</a>
+                    </td>
+
+                </tr>
+			<%}%>
+
+        </tbody>
+
+</table>
+
+</script>

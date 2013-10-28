@@ -1,0 +1,621 @@
+<div class="container-fluid">
+
+    <!-- BEGIN PAGE HEADER-->
+
+    <div class="row-fluid">
+
+        <div class="span12">
+
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+            <h3 class="page-title">
+
+                用户设置 <small>添加、更新、注销用户等</small>
+
+            </h3>
+
+            <ul class="breadcrumb">
+
+                <li>
+
+                    <i class="icon-home"></i>
+
+                    <a href="index.html">我的工作台</a> 
+
+                    <span class="icon-angle-right"></span>
+
+                </li>
+
+                <li>
+                    <i class="icon-cog"></i>
+                    <a href="#">人力资源</a>
+
+                    <span class="icon-angle-right"></span>
+
+                </li>
+
+                <li>
+                    <i class="icon-user"></i>
+                    <a href="#">用户设置</a></li>
+
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+
+        </div>
+
+    </div>
+
+    <!-- END PAGE HEADER-->
+
+    <!-- BEGIN PAGE CONTENT-->
+	
+	<div class="row-fluid">
+
+		<div class="span12">
+               				   
+            <div  class="portlet box red">
+
+                <div class="portlet-title">
+
+                    <div class="caption"><i class="icon-edit"></i>新增用户</div>
+
+                    <div class="actions">
+
+                        <button class="btn green" id="btn-set" data-loading-text="加载中..."><i class="icon-cog"></i> 用户设置</button>
+
+                        <button style="display:none" class="btn blue user-set" data-loading-text="加载中..." id="btn-add"><i class="icon-plus"></i> 新增用户</button>
+
+                    </div>
+                
+                </div>
+
+            <!-- BEGIN USER LIST-->
+                <div class="portlet-body">
+
+                    <div class="row-fluid">
+
+                        <div class="span12">
+
+                            <!--BEGIN TABS-->
+
+                            <div class="tabbable tabbable-custom tabs-left" style="display:none;">
+
+                                <ul class="nav nav-tabs tabs-left" id="setting_deptlist_tpl">
+
+                                    <li class="active"><a para="1" data-toggle="tab" href="">IT部</a></li>
+                                    <li class=""><a para="1" data-toggle="tab" href="">资金部</a></li>
+                                    <li class=""><a para="1" data-toggle="tab" href="">融资租赁部</a></li>
+                                    <li class=""><a para="1" data-toggle="tab" href="">综合管理中心</a></li>
+
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div id="setting_userlist_tpl" class="tab-pane active" style="min-height:150px;">
+                                        <div class="row-fluid">
+                                        <div class="span6">
+                                        <div id="sample_3_length" class="dataTables_length"><label>每页显示 <select name="sample_3_length" size="1" aria-controls="sample_3"><option value="5" selected="selected">5</option><option value="15">15</option><option value="20">20</option><option value="-1">所有</option></select> 条记录</label></div></div><div class="span6"></div>
+                                        </div>
+
+                                        <table class="table table-striped table-bordered table-hover" id="sample_3">
+
+                                            <thead>
+
+                                                <tr>
+
+                                                    <th><i class="icon-user"></i> 编号</th>
+
+                                                    <th><i class="icon-user"></i> 用户名</th>
+
+                                                    <th><i class="icon-user"></i> 姓名</th>
+
+                                                    <th><i class="icon-user"></i> 主手机</th>                                                    
+
+                                                    <th><i class="icon-user"></i> 邮箱</th>
+
+                                                    <th><i class="icon-briefcase"></i> 职称</th>
+                                                  
+                                                    <th><i class="icon-briefcase"></i> 操作</th>
+                                                    
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody>
+                                                
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a href="javascript:void(0);">jia58960</a></td>
+                                                    <td>张佳</td>
+                                                    <td>13480657523</td>
+                                                    <td>547221469@sz-kingray.com</td>
+                                                    <td>初级程序员</td>
+                                                    <td>
+                                                    <a tag="5" class="btn blue mini" href="javascript:void(0);"><i class="icon-edit"></i> 编辑</a>
+                                                    <a tag="5" class="btn red mini" href="javascript:void(0);"><i class="icon-trash"></i> 离职</a> <a tag="5" class="btn green mini" href="javascript:void(0);"><i class="icon-repeat"></i> 重置密码</a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><a href="javascript:void(0);">forml</a></td>
+                                                    <td>陈万才</td>
+                                                    <td>13480652323</td>
+                                                    <td>forml@sz-kingray.com</td>
+                                                    <td>中级程序员</td>
+                                                    <td>
+                                                    <a tag="5" class="btn blue mini" href="javascript:void(0);"><i class="icon-edit"></i> 编辑</a>
+                                                    <a tag="5" class="btn red mini" href="javascript:void(0);"><i class="icon-trash"></i> 离职</a> <a tag="5" class="btn green mini" href="javascript:void(0);"><i class="icon-repeat"></i> 重置密码</a>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+
+                                    </table>
+                                    </div>                                    
+
+                                </div>
+
+                            </div>
+
+                            <!--END TABS-->
+
+                            <!--添加用户表单 开始-->
+
+                            <form action="" id="addUserForm" class="form-horizontal">
+                            
+                            <h4 class="form-section">基本信息</h4>
+
+                            <div class="row-fluid">
+                                
+                                <div class="span6">
+                                    
+                                    <div class="control-group">
+                             
+                                    <label class="control-label">姓名<span class="required">*</span></label>
+                             
+                                    <div class="controls">
+                                        
+                                        <div class="input-icon left">
+
+                                            <i class="icon-user"></i>
+
+                                            <input type="text" name="name" class="span10 m-wrap">
+
+
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                                    
+                                </div>
+                                <div class="span6">
+                                    <div class="control-group">
+                             
+                                    <label class="control-label">用户名<span class="required">*</span></label>
+                             
+                                    <div class="controls">
+                                        
+                                        <div class="input-icon left">
+
+                                            <i class="icon-user"></i>
+
+                                            <input type="text" name="username" placeholder="可为姓名,用于系统登录" class="span10 m-wrap">
+
+                                        </div>
+                                    </div>
+                             
+                                </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="control-group">
+                             
+                                    <label class="control-label">入职时间<span class="required">*</span></label>
+                             
+                                    <div class="controls">
+
+                                        <div class="input-icon left">
+
+                                            <i class="icon-calendar"></i>
+
+                                            <input name="join_time" placeholder="yyyy-MM-dd" class="span10 m-wrap date-picker"  style="cursor:pointer"  type="text" />
+
+                                        </div>
+                                                      
+                                    </div>
+                             
+                                </div>
+                                </div>
+
+                                <div class="span6">
+                                    <div class="control-group">
+                             
+                                    <label class="control-label">性别<span class="required">*</span></label>
+                             
+                                    <div class="controls">
+                             
+                                        <label class="radio">
+                             
+                                            <input type="radio" name="gender" value="1" checked />
+                             
+                                            男
+                             
+                                            </label>
+                             
+                                        <label class="radio">
+                             
+                                            <input type="radio" name="gender" value="2" />
+                             
+                                            女
+                             
+                                            </label> 
+                             
+                                    </div>
+                             
+                                </div>
+                                </div>
+                            </div>
+                                
+                            <div class="row-fluid">
+
+                                <div class="span6">
+                                <div class="control-group">
+                             
+                                    <label class="control-label">邮箱<span class="required">*</span></label>
+                             
+                                    <div class="controls">
+                             
+                                        <div class="input-icon left">
+                             
+                                            <i class="icon-envelope"></i>
+                             
+                                            <input class="span10 m-wrap" name="email" type="text" placeholder="分配的公司邮箱" />    
+
+                                            <p class="help-block">
+                                                注：请填写常用邮箱地址，若无邮箱由公司分配。
+                                            </p>
+                             
+                                        </div>
+                             
+                                    </div>
+                             
+                                </div>
+
+                                    
+                                </div>
+
+                                <div class="span6">
+
+                                    <div class="control-group">
+                                 
+                                        <label class="control-label">主手机<span class="required">*</span></label>
+                                 
+                                        <div class="controls">
+                                 
+                                            <input type="text" placeholder="常用手机号且信息可达" name="main_moblie" class="span10 m-wrap">
+                                            <p class="help-block">
+                                                注：该手机号将用于系统内部的重要信息提醒，请务必认真填写
+                                            </p>
+                                        </div>
+                                 
+                                    </div>
+
+                                </div>
+
+                            </div>
+                                                    
+                            <div class="row-fluid">
+                               
+
+                                <div class="span12">
+                                    <div class="control-group">
+                             
+                                    <label class="control-label">生日</label>
+                             
+                                    <div class="controls">
+                                        <div class="input-icon left">
+
+                                            <i class="icon-calendar"></i>
+
+                                            <input name="birthday" class="span6 m-wrap date-picker" placeholder="yyyy-MM-dd" type="text" style="cursor:pointer" />
+
+                                            <p class="help-block">
+                                                注：请选择公历生日
+                                            </p>
+
+                                        </div>
+                                    </div>
+                             
+                                </div>
+                                </div>
+                            </div>
+                                                    
+                            <div class="row-fluid">
+                                 <div class="span6">
+                                    <div class="control-group">
+                                                 
+                                    <label class="control-label">主部门<span class="required">*</span></label>
+                                                 
+                                    <div class="controls">
+                                                 
+                                        <select class="span10 m-wrap" data-placeholder="请选择部门" tabindex="1">
+                                                 
+                                            <option value="">请选择</option>
+                                                 
+                                            <option value="Category 1">总经理室</option>
+                                                 
+                                            <option value="Category 2">人力资源</option>
+                                                 
+                                            <option value="Category 3">IT部</option>
+                                                 
+                                        </select>
+                                                 
+                                    </div>
+                                                 
+                                </div>
+                                </div>
+
+                                <div class="span6">
+                                    <div class="control-group">
+                                                 
+                                    <label class="control-label">职称<span class="required">*</span></label>
+                                                 
+                                    <div class="controls">
+                                                 
+                                        <select class="span10 m-wrap" data-placeholder="请选择职位" tabindex="1">
+                                                 
+                                            <option value="">请选择</option>
+                                                 
+                                            <option value="Category 1">初级客户经理</option>
+                                                 
+                                            <option value="Category 2">高级客户经理</option>
+                                                 
+                                            <option value="Category 3">中级客户经理</option>
+                                                 
+                                        </select>
+                                                 
+                                    </div>
+                                                 
+                                </div>
+                                </div>
+
+                            </div>
+                            
+                            <div class="row-fluid">
+                                 <div class="span6">
+                                    <div class="control-group">
+                                                 
+                                    <label class="control-label">第二部门</label>
+                                                 
+                                    <div class="controls">
+                                                 
+                                        <select class="span10 m-wrap" data-placeholder="请选择部门" tabindex="1">
+                                                 
+                                            <option value="">请选择</option>
+                                                 
+                                            <option value="Category 1">总经理室</option>
+                                                 
+                                            <option value="Category 2">人力资源</option>
+                                                 
+                                            <option value="Category 3">IT部</option>
+                                                 
+                                        </select>
+
+                                        <span class="help-block">注：没有隶属另一部门不设置此项</span>
+                                                 
+                                    </div>
+                                                 
+                                </div>
+                                </div>
+
+                                <div class="span6">
+                                    <div class="control-group">
+                                                 
+                                    <label class="control-label">职称</label>
+                                                 
+                                    <div class="controls">
+                                                 
+                                        <select class="span10 m-wrap" data-placeholder="请选择职位" tabindex="1">
+                                                 
+                                            <option value="">请选择</option>
+                                                 
+                                            <option value="Category 1">初级客户经理</option>
+                                                 
+                                            <option value="Category 2">高级客户经理</option>
+                                                 
+                                            <option value="Category 3">中级客户经理</option>
+                                                 
+                                        </select>
+
+                                        <span class="help-block">注：没有第二部门不设置</span>
+                                                 
+                                    </div>
+                                                 
+                                </div>
+                                </div>
+
+                            </div>
+
+                            
+
+                        
+                        <h4 class="form-section">其他联系信息</h4>
+
+                        <div class="row-fluid">
+
+                            <div class="span6">
+
+                                    <div class="control-group">
+                             
+                                        <label class="control-label">手机2</label>
+                             
+                                        <div class="controls">
+                                 
+                                            <input type="text" name="telphone" class="span10 m-wrap">
+                                 
+                                        </div>
+                             
+                                    </div>
+                                   
+                            </div>
+                            <div class="span6">
+                                <div class="control-group">
+                                 
+                                    <label class="control-label">手机3</label>
+                         
+                                    <div class="controls">
+                             
+                                        <input type="text" name="telphone" class="span10 m-wrap">
+                             
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                            </div>
+                                
+
+                            <div class="row-fluid">
+
+                                <div class="span6">
+                                    <div class="control-group">
+                                 
+                                            <label class="control-label">座机1</label>
+                                 
+                                            <div class="controls">
+                                     
+                                                <input type="text" name="telphone" class="span10 m-wrap">
+                                     
+                                            </div>
+                                 
+                                        </div>
+                                </div>
+
+                                <div class="span6">
+                                    <div class="control-group">
+                                 
+                                            <label class="control-label">座机2</label>
+                                 
+                                            <div class="controls">
+                                     
+                                                <input type="text" name="telphone" class="span10 m-wrap">
+                                     
+                                            </div>
+                                 
+                                        </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="row-fluid">
+
+                                <div class="span12">
+                                    <div class="control-group">
+                                 
+                                        <label class="control-label">座机3</label>
+                             
+                                        <div class="controls">
+                                 
+                                            <input type="text" name="telphone" class="span5 m-wrap">
+                                 
+                                        </div>
+                                 
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+
+                                                                                             
+                            <div class="form-actions">
+                                             
+                                <button type="submit" class="btn blue">提交</button>
+                                             
+                                <button id="btn_leave_cancel" type="button" class="btn">取消</button>                            
+                                             
+                            </div>
+                                                                         
+                            </form>
+                         <!--添加用户表单 结束-->
+
+                        </div>                                 
+
+                    </div>
+
+                </div>
+
+            <!-- END USERLIST  -->       
+
+            </div>                
+                     				
+		</div>
+
+	</div>
+	
+	<!-- END PAGE CONTENT -->
+	
+</div>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+	<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+
+	<!-- <script type="text/javascript" src="media/js/additional-methods.min.js"></script>
+
+	<script type="text/javascript" src="media/js/jquery.bootstrap.wizard.min.js"></script> -->
+
+    <script src="media/js/form-components.js"></script> 
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script type="text/javascript">
+
+		jQuery(document).ready(function() {       
+
+		FormValidation.init();
+
+        FormComponents.init();
+
+           //初始化左侧部门列表
+
+        //yxload('setting', 'deptlist_tpl', '');
+
+        
+
+        //点击切换效果
+        $("#btn-add").click(function(){
+            $(".user-set").hide();
+            $("#btn-set").show();    
+            $(this).parent().prev(".caption").html('<i class="icon-edit"></i> 新增用户');
+            $("div.tabbable").effect('drop',{direction:'left',mode:'hide'},400,function(){
+                $("#addUserForm").effect('drop',{direction:'right',mode:'show'},600);
+            });
+            
+
+        });
+		
+        $("#btn-set").click(function(){
+            $(".user-set").show(); 
+            $(this).hide();
+            $("#addUserForm").effect('drop',{direction:'right',mode:'hide'},600,function(){
+                $("div.tabbable").effect('drop',{direction:'left',mode:'show'},400);
+            });
+            
+
+            $(this).parent().prev(".caption").html('<i class="icon-user"></i> 用户设置');
+        })
+        
+
+        
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   

@@ -1,0 +1,151 @@
+<div class="container-fluid">
+
+    <!-- BEGIN PAGE CONTENT-->
+	
+	<div class="row-fluid">
+
+		<div class="span12">
+			
+			<div class="portlet box blue">
+
+				<div class="portlet-title">
+
+					<div class="caption"><i class="icon-reorder"></i>用户与角色设置</div>
+
+				</div>
+
+				<div class="portlet-body form">
+
+					<!-- BEGIN FORM-->
+
+					<form action="#" class="form-horizontal" id="userRoleForm">
+						
+						   <div class="control-group">
+
+                            <label class="control-label">用户</label>
+
+                            <div class="controls" id="userList">
+
+                               <label class="checkbox">
+
+									<input type="checkbox" value="">全选
+
+								</label>
+
+                            </div>
+
+                        </div>
+						
+						<div class="control-group">
+
+							<label class="control-label">角色</label>
+							
+							<div class="controls" id="roleList">
+
+
+							</div>
+							
+						</div>
+						
+						<div class="form-actions">
+
+							<button class="btn blue" id="addRoleBtn">添加</button>
+
+							<button class="btn red" id="romoveRoleBtn">解除</button>                            
+
+						</div>	
+					
+					</form>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+	
+	<!-- END PAGE CONTENT -->
+	
+</div>
+	
+	<script type="text/javascript">
+
+		jQuery(document).ready(function() {  
+
+			var urlfix = "<%=urlfix%>";
+	        handleUniform();
+	        var urljasonfix = eval(urlfix);
+	        //角色列表
+	        if(!urljasonfix.userList){
+
+	            urljasonfix.userList =
+	            [{
+	                "ra":"userList",
+	                "dir":"Set/BI/userlist",
+	                "dif":'user/listAllUsers',
+	                "m":2
+	                }
+	            ];            
+	        }
+	        yixunload(urljasonfix.userList,urlfix);
+	        
+	        //角色列表
+	        if(!urljasonfix.roleList){
+	            urljasonfix.roleList =
+	            [{
+	                "ra":"roleList",
+	                "dir":"Com/rolelist",
+	                "dif":'permission/listAllRoles',
+	                "m":2
+	                }
+	            ];            
+	        }
+	        yixunload(urljasonfix.roleList,urlfix);
+
+	        //绑定
+	        $("#addRoleBtn").click(function(){
+	        	alert('123');
+		     	$('#userRoleForm').submit(function() {
+			        var data = $(this).serialize(); //序列化表单数据 
+			        console.log(data);
+			        //return false;
+			        $.getJSON(
+			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/addRolesToUsers?jsoncallback=?",data,
+			            function(json) {
+			            	console.log(json);
+			            	//return false;
+			            	if(json.resultCode){
+				            	App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+			            	}
+			            }
+			        ); 
+			        return false; 
+			    }); 
+		 	
+			}); 
+
+			//解除
+	        $("#romoveRoleBtn").click(function(){
+		     	$('#userRoleForm').submit(function() {
+			        var data = $(this).serialize(); //序列化表单数据 
+			        console.log(data);
+			        //return false;
+			        $.getJSON(
+			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/deleteRolesFromUsers?jsoncallback=?",data,
+			            function(json) {
+			            	console.log(json);
+			            	if(json.resultCode){
+				            	App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+			            	}
+			            }
+			        ); 
+			        return false; 
+			    }); 
+		 	
+			});
+
+
+		});
+
+	</script>

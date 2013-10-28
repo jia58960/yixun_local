@@ -1,0 +1,39 @@
+<div class="navbar navbar-inner">
+<ul class="nav">
+
+<%for(var i = 0;i<serverdata.length;i++){%>
+	<li>
+
+	<input type="checkbox">
+		<%=serverdata[i].resourceName%>
+
+		<ul class="unstyle">
+
+			<%for(var j = 0;j<serverdata[i].yxResourceSelfRelationsForSuperiorResourceId.length;j++){%>
+
+				<li>
+					<input type="checkbox">
+					<%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.resourceName%>
+
+					<ul>
+						<%for(var k = 0;k<serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.yxResourceSelfRelationsForSuperiorResourceId.length;k++){%>
+						<li>
+							<input type="checkbox" name="pageId" value="<%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.yxResourceSelfRelationsForSuperiorResourceId[k].yxResourceBySublevelResourceId.resourceId%>">
+							<%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.yxResourceSelfRelationsForSuperiorResourceId[k].yxResourceBySublevelResourceId.resourceName%></label>
+						</li>
+						<%}%>
+					</ul>
+					
+				</li>
+
+			<%}%>
+
+		</ul>
+	
+	</li>
+<%}%>
+</ul>
+</div> 
+<script type="text/javascript">
+	handleUniform();
+</script>

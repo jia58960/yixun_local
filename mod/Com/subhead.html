@@ -1,0 +1,26 @@
+<h3 class="page-title">
+
+	<%=data.module_name%> <small><%=data.module_des%></small>
+
+</h3>
+
+<ul class="breadcrumb">
+
+	<li>
+
+		<i class="icon-home"></i>
+
+		<a href="index.html">Home</a> 
+
+		<i class="icon-angle-right"></i>
+
+	</li>
+	<% for (var i = 0, l = data.module_nav.length; i < l; i++) { %>
+
+		<li><a href="<%=data.module_nav[i].nav_url%>"><%=data.module_nav[i].nav_name%></a>
+			<i class="icon-angle-right"></i>
+		</li>
+
+	<% } %>
+
+</ul>

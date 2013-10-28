@@ -1,0 +1,109 @@
+<!--
+Author  : zhangjia
+Date    : 20130913
+Describe: userlist_module
+-->
+<script type="text/template" id="userlist_module">
+   
+        <div class="tabbable tabbable-custom tabs-left">
+
+            <ul class="nav nav-tabs tabs-left">
+            <% for (var i = 0, l = deptlist.length; i < l; i++) { %>
+                <li><a href="#tab_deptid_<%=deptlist[i].deptid%>" data-toggle="tab"><%=deptlist[i].deptname%></a></li>
+            <% } %>
+            </ul>
+
+            <div class="tab-content">
+
+
+                <% for (var j = 0, len = userlist.length; j < len; j++) { %>
+
+                <div id="tab_deptid_<%=userlist[j].deptid%>" class="tab-pane">
+
+                    <table class="table table-striped table-bordered table-advance table-hover userlist_table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th><i class="icon-user"></i> 排序号</th>
+
+                                <th><i class="icon-user"></i> 用户名</th>
+
+                                <th><i class="icon-user"></i> 真实姓名</th>
+
+                                <th><i class="icon-briefcase"></i> 职称</th>
+
+                                <th><i class="icon-briefcase"></i> 角色</th>
+                               
+                                <th><i class="icon-briefcase"></i> 操作</th>
+                                
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        <% for (var k = 0, leng = userlist[j].data.length; k < leng; k++) { %>
+                            <tr>
+                            <td><%=userlist[j].data[k].sort%></td>
+                            <td><a href="userlist_"><%=userlist[j].data[k].username%></a></td>
+                            <td><%=userlist[j].data[k].name%></td>
+                            <td><%=userlist[j].data[k].zhicheng%></td>
+                            <td><%=userlist[j].data[k].role%></td>
+                            <td>
+                                <a tag="<%=userlist[j].data[k].userid%>" class="btn red mini" href="javascript:void(0);"><i class="icon-trash"></i> 删除</a> 
+                                <a tag="<%=userlist[j].data[k].userid%>" class="btn green mini" href="javascript:void(0);"><i class="icon-repeat"></i> 重置密码</a>
+                            </td>
+                            </tr>
+                        <% } %>
+                            
+                        </tbody>
+
+                    </table>
+                </div>                                    
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+       <script type="text/javascript">
+       $(function(){
+
+        //以下代码冗余，还有部分未完成
+        var module_obj = $.parseJSON($.query.get('module'));
+        var deptid = module_obj.para.deptid;
+        if (deptid) {
+           console.log(deptid);
+           var preffix = 'deptid';
+            $(".nav-tabs li").find("a[href='#tab_"+preffix+"_" + deptid + "']").closest("li").addClass("active").closest(".tabbable").find(".tab-content div[id='tab_"+preffix+"_" + deptid + "']").addClass("active");
+            
+        } else {
+            
+            $(".nav-tabs li").eq(0).addClass('active');
+            var _initid = $(".nav-tabs li > a").eq(0).attr('href');
+        }
+        $('.userlist_table').dataTable({
+                "bFilter":false,
+                "aLengthMenu": [
+                    [5, 15, 20, -1],
+                    ["5", "15", "20", "所有"] // change per page values here
+                ],
+                //"bProcessing": true,
+                //"sAjaxSource": 'jsonDataDemo/userlist_tpl.php?deptid='+_initid,
+                //"sServerMethod": "POST",
+                "iDisplayLength":5,
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",//翻页样式
+                "oLanguage": {
+                    "sUrl": "dataTable_zh-cn.txt"
+                },
+                "bSort": false,//禁用排序功能
+            });
+       })
+        
+       </script>
+    
+</script>

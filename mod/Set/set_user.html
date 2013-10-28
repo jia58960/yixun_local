@@ -1,0 +1,184 @@
+<!--
+Author  : zhangjia
+Date    : 20130913
+Describe: user_setting_module.
+-->
+<!-- BEGIN PAGE CONTENT-->  
+<div class="row-fluid">
+
+    <div class="span12">
+                           
+        <div  class="portlet box red">
+
+            <div class="portlet-title">
+
+                <div class="caption"><i class="icon-user"></i>用户设置</div>
+
+                <div class="actions">
+
+                    <a class="btn blue employeeInfo" href="javascript:;"><i class="icon-plus"></i> 新增用户</a>
+
+                    <div class="btn-group">
+
+                        <a data-toggle="dropdown" href="#" class="btn">
+
+                        <i class="icon-wrench"></i> 工具
+
+                        <i class="icon-angle-down"></i>
+
+                        </a>
+
+                        <ul class="dropdown-menu pull-right">
+
+                            <li><a href="#"><i class="icon-share-alt"></i> 格式化导出</a></li>
+
+                            <li><a href="#"><i class="icon-print"></i> 格式化打印</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            
+            </div>
+
+        <!-- BEGIN USER LIST-->
+            <div class="portlet-body">
+
+                <div class="row-fluid">
+
+                    <div class="span12">
+
+                        <div class="tabbable tabbable-custom tabs-left">
+
+
+                            <ul class="nav nav-tabs tabs-left" id="deptlist">
+
+                                <!--部门列表数据放置区-->
+
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div id="employeeList" class="tab-pane active" style="min-height:150px;">
+
+                                    <!--用户列表数据放置区-->
+
+                                </div>   
+
+                                <div class="tab-pane" id="employeeInfo">
+                                    
+                         
+                                </div>                                 
+
+                            </div>
+
+
+                        </div>
+
+                    </div>        
+
+                    
+
+                </div>
+
+            </div>
+
+        <!-- END USERLIST  -->       
+
+        </div>                
+                                
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        
+        var urlfix = "<%=urlfix%>";
+        console.log(urlfix);
+
+        var urljasonfix = eval(urlfix);
+        
+        //部门列表
+        if(!urljasonfix.deptlist){
+
+            urljasonfix.deptlist =
+            [{
+                "ra":"deptlist",
+                "dir":"Com/deptlist",
+                "dif":'department/listAllDepartments',
+                "p":{"deptId":'4'}
+                }
+            ];            
+        }
+        yixunload(urljasonfix.deptlist,urlfix);
+        
+        //用户列表
+        if(!urljasonfix.employeeList){
+            urljasonfix.employeeList =
+            [{
+                "ra":"employeeList",
+                "dir":"Set/BI/epmloyeelist",
+                "dif":"department/getEmployeePage",
+                "p":"deptId=4",
+                "columns":
+                [
+                    { "mData": "employeeId" },
+                    { 
+                        "mData": "employeeName",
+                        "mRender": function(data,type,full) {
+                            return '<a class="emplyeeInfoLink" href="'+full+'">'+data+'</a>';
+                        }
+                     },
+                    { "mData": "employeeEmail" },
+                    { "mData": "employeeMobilePhoneMaster" }
+                ]
+            }];
+        }
+        datableload(urljasonfix.employeeList,urlfix);        
+        
+        //点部门刷部门用户列表
+        $("#deptlist li a").on('click',function(){
+            $("#employeeInfo").removeClass('active');
+            $("#employeeList").addClass('active');
+
+            var cudeptid = $(this).attr('id');    
+            urljasonfix.employeeList =
+            [
+                {"ra":"employeeList",
+                "dir":"Set/BI/epmloyeelist",
+                "dif":'department/getEmployeePage',
+                "p":"deptId="+cudeptid,
+                "columns":
+                [
+                    { "mData": "employeeId" },
+                    { "mData": "employeeName" },
+                    { "mData": "employeeEmail" },
+                    { "mData": "employeeMobilePhoneMaster" }
+                ]
+                }
+            ];      
+            datableload(urljasonfix.employeeList,urlfix);      
+        })
+
+        //return false;
+        //新增用户表单
+        if(!urljasonfix.employeeInfo) {
+            urljasonfix.employeeInfo =
+            [
+                {"ra":"employeeInfo",
+                "dir":"Set/BI/employeeinfo",
+                "dif":'',
+                "p":{"userid":""}
+                }
+            ];
+        }
+        yixunload(urljasonfix.employeeInfo,urlfix);
+
+    });
+
+</script>
+
+<!-- END JAVASCRIPTS -->   

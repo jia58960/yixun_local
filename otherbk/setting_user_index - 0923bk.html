@@ -1,0 +1,106 @@
+<!--
+Author  : zhangjia
+Date    : 20130913
+Describe: user_setting_module.
+-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE CONTENT-->
+    
+    <div class="row-fluid">
+
+        <div class="span12">
+                               
+            <div  class="portlet box red">
+
+                <div class="portlet-title">
+
+                    <div class="caption"><i class="icon-user"></i>用户设置</div>
+
+                    <div class="actions">
+
+                        <a class="btn blue user-set" id="btn-add" href="javascript:;"><i class="icon-plus"></i> 新增用户</a>
+
+                        <a style="display:none" class="btn" id="btn-set" href="javascript:;"><i class="m-icon-swapleft"></i> 用户设置</a>
+
+                        <div class="btn-group user-set">
+
+                            <a data-toggle="dropdown" href="#" class="btn">
+
+                            <i class="icon-wrench"></i> 工具
+
+                            <i class="icon-angle-down"></i>
+
+                            </a>
+
+                            <ul class="dropdown-menu pull-right">
+
+                                <li><a href="#"><i class="icon-share-alt"></i> 格式化导出</a></li>
+
+                                <li><a href="#"><i class="icon-print"></i> 格式化打印</a></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                
+                </div>
+
+            <!-- BEGIN USER LIST-->
+                <div class="portlet-body">
+
+                    <div class="row-fluid">
+
+                        <div class="span12" id="setting_userlist_module">
+
+                            <!--BEGIN TABS-->
+
+                            
+
+                            <!--END TABS-->
+                        </div>        
+
+                        <!-- <div class="span12" id="userlist_form_module">
+                            
+                             END TABS
+                         </div>  -->                         
+
+                    </div>
+
+                </div>
+
+            <!-- END USERLIST  -->       
+
+            </div>                
+                                    
+        </div>
+
+    </div>
+    
+    <!-- END PAGE CONTENT -->
+    
+</div>
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+
+<!-- END PAGE LEVEL PLUGINS -->
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        //alert('先加载部门用户列表');
+        var groups = $.query.get('subModules');
+        if(!groups) {
+            //alert('local');
+            yxload('setting', 'setting_modules', 'userlist_module' , '')
+        } else {
+            alert('wawawa');
+            getSubModule('setting','setting_user_index');
+        }
+
+    });
+
+</script>
+
+<!-- END JAVASCRIPTS -->   

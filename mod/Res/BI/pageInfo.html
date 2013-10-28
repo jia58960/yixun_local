@@ -1,0 +1,109 @@
+
+<div style="padding:10px 14px">
+    <h4>
+        修改页面信息
+    </h4>
+
+</div>
+<form action="" id="editPageForm" class="form-horizontal">
+
+    <input type="hidden" value="<%=serverdata.resourceId%>" name="resourceId">
+
+    <div class="control-group">
+ 
+        <label class="control-label">页面名称<span class="required">*</span></label>
+ 
+        <div class="controls">
+            
+            <div class="input-icon left">
+                <i class="icon-tasks"></i>
+
+                <input type="text" name="resourceName" class="span4 m-wrap" value="<%=serverdata.resourceName%>" />
+
+            </div>
+ 
+        </div>
+
+    </div>   
+            
+     <div class="control-group">
+     
+        <label class="control-label">路径<span class="required">*</span></label>
+     
+        <div class="controls">
+     
+            <div class="input-icon left">
+     
+                <i class="icon-folder-close"></i>
+     
+                <input class="span4 m-wrap" name="resourceDescribe" type="text" value="<%=serverdata.resourceDescribe%>" />    
+                
+            </div>
+     
+        </div>
+     
+    </div> 
+            
+    
+     <div class="control-group" id="filename_edit" style="display:none;">
+     
+        <label class="control-label">页面文件名<span class="required">*</span></label>
+     
+        <div class="controls">
+    
+            <div class="input-icon left">
+    
+            <i class="icon-file-text"></i>
+            
+            <input type="text" placeholder="页面的文件名。如：puchase" name="resourceCode" class="span4 m-wrap" value="<%=serverdata.resourceCode%>">
+    
+            </div>
+        </div>
+    
+     </div> 
+
+    <div class="control-group">
+ 
+        <label class="control-label">资源类型ID<span class="required">*</span></label>
+ 
+        <div class="controls">
+
+            <div class="input-icon left">
+
+            <i class="icon-file-text"></i>
+            
+            <input type="text" name="resourceTypeId" class="span2 m-wrap" id="restype_edit" value="2" readonly="readonly">
+            
+            </div>
+        </div>
+
+     </div>
+                                                                 
+    <div class="form-actions">
+                                     
+        <button class="btn blue">提交</button>
+        <input type="reset" class="btn" value="重置" />
+
+    </div>
+                                                     
+</form>
+<script type="text/javascript">
+    //使用 jquery 异步跨域提交表单 
+        $('#editPageForm').submit(function() {
+            var data = $(this).serialize();
+            console.log(data);
+            //return false;
+            $.getJSON(
+                "http://10.188.192.200:8080/YIXUN_1.5_EE/resource/updateResource?jsoncallback=?",data,
+                function(json) {
+                    console.log(json);
+                    if(json.resultCode){
+                        App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+                    } else {
+                        App.ajaxblockUI('error','系统错误',setTimeout($.unblockUI, 2000));
+                    }
+                }
+            ); 
+            return false; 
+        }); 
+</script>

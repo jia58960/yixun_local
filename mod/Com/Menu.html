@@ -1,0 +1,106 @@
+<% 
+ for (var i = 0, l = serverdata.length; i < l; i++) { %>
+	
+	<% if(serverdata[i].resourceName == '工作台'){%>
+		<li>
+			<a href="index.php" id="<%=serverdata[i].resourceId%>">
+				<i class="<%=serverdata[i].resourceIcon%>"></i>
+		        <span class="title"><%=serverdata[i].resourceName%></span>
+		        <span id="index_s"></span>
+		    </a>
+		</li>
+	<%} else {%>
+
+	<li>
+		<a href="javascript:;">
+
+		<i class="<%=serverdata[i].resourceIcon%>"></i> 
+
+		<span class="title"><%=serverdata[i].resourceName%></span>
+		<span class="selected"></span>
+		<span class="arrow open"></span>
+
+		</a>
+
+		<ul class="sub-menu">
+			<% for (var j = 0, len = serverdata[i].yxResourceSelfRelationsForSuperiorResourceId.length; j < len; j++) { %>
+		        <li>
+		            <a href="javascript:;" id="<%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.resourceId%>" class="open_tabs">
+		            	<%==serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.resourceName%>
+		            </a>
+		        </li>
+		    <% } %>
+			
+		</ul>
+
+	</li>
+<% }} %>
+<script type="text/javascript">
+	//点击首页左侧二级菜单
+    $('.page-sidebar').on('click', ' li > a.open_tabs', function (e) {
+             //@@后面还需要做点击高亮，同时更改urlJSON数据
+            e.preventDefault();
+            App.scrollTop();
+            
+            var label = $(this).html();
+            var link_id = $(this).attr('id');                
+            
+            var menuContainer = jQuery('.page-sidebar ul');
+            
+
+            var tabContent = $("#dashboard");
+            menuContainer.children('li.active').removeClass('active');
+            menuContainer.children('arrow.open').removeClass('open');
+
+            $(this).parents('li').each(function () {
+                $(this).addClass('active');
+                $(this).children('a > span.arrow').addClass('open');
+            });
+            $(this).parents('li').addClass('active');
+
+            //App.ajaxblockUI($("#sub_m"),false,'success');
+            //return;
+            //var urlfixObj = urlJSON;
+            
+            urlJSON.Db_m[0].p2.fid = link_id;       
+            flushurl();
+            //return;
+            //载入当前模块的submenu
+            var submenu = [{
+            	"ra":"sub_m",
+				"dir":"Com/Submenu",
+				"dif":'resource/listSubResourcesByType',
+				"p":{"resourceId":link_id,"resourceTypeId":2},
+				"p2":{"subid":""}
+			}];
+
+            yixunload(submenu,"urlJSON");
+
+            return false;
+    });
+	
+
+	//加载默认子菜单
+    if(!urlJSON.sub_m) {
+    	urlJSON.sub_m =
+		[{
+			"ra":"sub_m",
+			"dir":"Com/Submenu",
+			"dif":'resource/listSubResourcesByType',
+			"p":{"resourceId":"1","resourceTypeId":2},
+			"p2":{"subid":"28"}
+		}];
+    } 
+
+    yixunload(urlJSON.sub_m,"urlJSON");
+
+    var menuflag = urlJSON.Db_m[0].p2.fid; //获取主菜单ID
+    if(!menuflag){
+        $("#index_s").addClass("selected").parent().parent("li").addClass("active");
+    }else{
+
+		$(".page-sidebar li a[id="+menuflag+"]").parent("li").addClass("active");
+		$(".page-sidebar li a[id="+menuflag+"]").parent("li").parent("ul").show();
+		$(".page-sidebar li a[id="+menuflag+"]").parent("li").parent("ul").parent("li").addClass('active').addClass('open');
+	}
+</script>

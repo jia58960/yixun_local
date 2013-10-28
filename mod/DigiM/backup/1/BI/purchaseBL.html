@@ -1,0 +1,116 @@
+<!-- <script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="jquery.dataTables.js"></script> -->
+
+<div class="tab-pane active" id="DigiM_BN">
+
+	<div class="portlet box blue">
+		<div class="portlet-title">
+			<div class="caption"><i class="icon-globe"></i>大物品列表</div>
+			<div class="actions">
+				<a class="btn yellow" href="javascript:;" id="addBN"><i class="icon-plus"></i> 新增物品</a>
+				<div class="btn-group"> <a class="btn" href="#" data-toggle="dropdown"> 查看其它列数据 <i class="icon-angle-down"></i> </a>
+					<div id="yx_table_column_toggler_1" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+						<label>
+							<input type="checkbox" checked data-column="0">
+							Rendering engine</label>
+						<label>
+							<input type="checkbox" checked data-column="1">
+							Browser</label>
+						<label>
+							<input type="checkbox" checked data-column="2">
+							Platform(s)</label>
+						<label>
+							<input type="checkbox" checked data-column="3">
+							Engine version</label>
+						<label>
+							<input type="checkbox" checked data-column="4">
+							CSS grade</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="row-fluid">
+				<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered table-hover dataTable" id="demmm">
+					<thead>
+						<tr>
+							<th width="20%">Rendering engine</th>
+							<th width="25%">Browser</th>
+							<th width="25%">Platform(s)</th>
+							<th width="15%">Engine version</th>
+							<th width="15%">CSS grade</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Rendering engine</th>
+							<th>Browser</th>
+							<th>Platform(s)</th>
+							<th>Engine version</th>
+							<th>CSS grade</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+
+		var oTable = $('#demmm').dataTable({
+			"bProcessing": true,
+			"bServerSide": true,
+			"sAjaxSource": "http://10.188.199.8:19998/yixun_local/mod/DigiM/IF/purchaseBigList.php",
+	        "aLengthMenu": [
+	            [5, 15, 20, -1],
+	            ["5", "15", "20", "所有"] // change per page values here
+	        ],       
+	        "iDisplayLength":5,
+	        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+	        "sPaginationType": "bootstrap",//翻页样式
+	        "bSort": true,//禁用排序功能
+	       
+		});
+		$('#yx_table_column_toggler_1 input[type="checkbox"]').change(function(){
+            /* Get the DataTables object again - this is not a recreation, just a get of the object */
+            var iCol = parseInt($(this).attr("data-column"));
+            var bVis = oTable.fnSettings().aoColumns[iCol].bVisible;
+            oTable.fnSetColumnVis(iCol, (bVis ? false : true));
+        });
+
+		//判断新增物品模块
+		var urlfix ="<%=data.urlfix%>";
+		var urljasonfix = eval(urlfix);
+
+		if(urljasonfix.DigiM_BN){
+			yixunload(urljasonfix.DigiM_BN,urlfix);
+	    }
+	    
+
+	   
+		//新增大物品
+		$("#addBN").on('click',function(){
+		    /*var demo1 = urlfix.lastIndexOf('.');
+		    var newurl = urlfix.slice(0,demo1);
+		    console.log(newurl);*/
+	        
+	        if(!urljasonfix.DigiM_BN){
+
+	            urljasonfix.DigiM_BN =
+	            [{
+	            	"ra":"DigiM_BN",
+	                "dir":"DigiM/BI/purchaseBN",
+	                "dif":'',
+	                }
+	            ];
+	        }
+	        yixunload(urljasonfix.DigiM_BN,urlfix);	
+		})
+        
+	});
+</script>

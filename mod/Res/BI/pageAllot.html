@@ -1,0 +1,8 @@
+<% for (var i =0;i<serverdata.length;i++){%>
+    <label class="checkbox">
+        <input type="checkbox" value="<%=serverdata[i].resourceId%>" name="pageId" /> <%=serverdata[i].resourceName%>(<%=serverdata[i].resourceDescribe%> <%=serverdata[i].resourceCode%>)
+    </label>
+<%}%>
+<script type="text/javascript">
+    handleUniform();
+</script>

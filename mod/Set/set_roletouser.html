@@ -1,0 +1,258 @@
+<div class="container-fluid">
+
+    <!-- BEGIN PAGE HEADER-->
+
+    <div class="row-fluid">
+
+        <div class="span12">
+
+            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+            <h3 class="page-title">
+
+                Horzontal Menu 1 <small>horizontal menu layout</small>
+
+            </h3>
+
+            <ul class="breadcrumb">
+
+                <li>
+
+                    <i class="icon-home"></i>
+
+                    <a href="index.html">主页</a> 
+
+                    <i class="icon-angle-right"></i>
+
+                </li>
+
+                <li>
+
+                    <a href="#">系统设置</a>
+
+                    <i class="icon-angle-right"></i>
+
+                </li>
+
+                <li>
+                
+                    <a href="#">角色设置</a>
+					
+					<i class="icon-angle-right"></i>
+                    
+                </li>
+               
+				<li>
+                
+                    <a href="#">添加/删除辅助角色</a>
+                    
+                </li>
+
+            </ul>
+
+            <!-- END PAGE TITLE & BREADCRUMB-->
+
+        </div>
+
+    </div>
+
+    <!-- END PAGE HEADER-->
+
+    <!-- BEGIN PAGE CONTENT-->
+	
+	<div class="row-fluid">
+
+		<div class="span12">
+			
+			<div class="portlet box blue">
+
+				<div class="portlet-title">
+
+					<div class="caption"><i class="icon-reorder"></i>添加/删除辅助角色</div>
+
+					<div class="tools">
+
+						<a href="javascript:;" class="collapse"></a>
+
+						<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+						<a href="javascript:;" class="reload"></a>
+
+						<a href="javascript:;" class="remove"></a>
+
+					</div>
+
+				</div>
+
+				<div class="portlet-body form">
+
+					<!-- BEGIN FORM-->
+
+					<form action="#" class="form-horizontal">
+
+						<div class="control-group">
+
+							<label class="control-label">操作</label>
+
+							<div class="controls">
+
+								<label class="radio">
+
+								<div class="radio"><span><input type="radio" name="optionsRadios1" value="option1"></span></div>
+
+								添加辅助角色
+
+								</label>
+
+								<label class="radio">
+
+								<div class="radio"><span class="checked"><input type="radio" name="optionsRadios1" value="option2" checked=""></span></div>
+
+								删除辅助角色
+
+								</label>  
+
+							</div>
+
+						</div>
+						
+						   <div class="control-group">
+
+                            <label class="control-label">请假人</label>
+
+                            <div class="controls">
+
+                                <select data-placeholder="请选择请假人" class="chosen span6" tabindex="-1" id="selS0V">
+
+                                    <option value=""></option>
+
+                                    <optgroup label="IT部">
+
+                                        <option>赖镇东</option>
+
+                                        <option>陈万才</option>
+
+                                        <option>胡金云</option>
+
+                                        <option>熊瑛琪</option>
+                                        
+                                        <option>张佳</option>
+                                        
+                                        <option>黄蒙蒙</option>
+
+                                    </optgroup>
+
+                                    <optgroup label="人力资源">
+
+                                        <option>骆赟</option>
+
+                                        <option>陈静</option>
+
+                                    </optgroup>
+
+                                    <optgroup label="资金部">
+
+                                        <option>梁晓莹</option>
+
+                                        <option>董静文</option>
+
+                                        <option>陈忠涛</option>
+
+                                        <option>黄芷妍</option>
+
+                                    </optgroup>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+						
+						<div class="control-group">
+
+							<label class="control-label">角色</label>
+							
+							<div class="controls">
+
+								<label class="checkbox">
+
+								<div class="checker"><span><input type="checkbox" value=""></span></div>全选
+
+								</label>
+								
+								<label class="checkbox">
+
+								<div class="checker"><span><input type="checkbox" value=""></span></div> OA 管理员
+
+								</label>
+
+								<label class="checkbox">
+
+								<div class="checker"><span><input type="checkbox" value=""></span></div> 董事长
+
+								</label>
+								
+								<label class="checkbox">
+
+								<div class="checker"><span><input type="checkbox" value=""></span></div> KR执行总经理
+
+								</label>
+								
+								<label class="checkbox">
+
+								<div class="checker"><span><input type="checkbox" value=""></span></div> IT专员
+
+								</label>
+
+							</div>
+							
+						</div>
+						
+						<div class="form-actions">
+
+							<button type="submit" class="btn blue">确定</button>
+
+							<button type="button" class="btn">取消</button>                            
+
+						</div>	
+					
+					</form>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+	
+	<!-- END PAGE CONTENT -->
+	
+</div>
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS >
+ 
+	<script src="media/js/table-editable.js"></script>    
+	
+	<!-- END PAGE LEVEL SCRIPTS >
+	<script>
+
+		jQuery(document).ready(function() {       
+
+		TableEditable.init();
+			 
+	   
+		   $(".ver-inline-menu li").click(function(){
+				$("#fm_user_new").slideUp();
+		   });
+		   
+		   $(".user_new").click(function(){
+				$("#fm_user_new").slideDown();
+				$(this).closest(".portlet").show();
+		   });
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   

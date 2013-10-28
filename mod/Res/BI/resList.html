@@ -1,0 +1,15 @@
+<% 
+for (var i = 0, l = serverdata.length; i < l; i++) { %>
+	
+	<% if (serverdata[i].resourceId!==1){%>
+	<option value="<%=serverdata[i].resourceId%>" tag="dir">
+		<%=serverdata[i].resourceName%>
+	</option>
+
+		<% for (var j = 0, len = serverdata[i].yxResourceSelfRelationsForSuperiorResourceId.length; j < len; j++) { %>
+		    <option value="<%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.resourceId%>" tag="page">
+		        <%=serverdata[i].resourceName%> > <%=serverdata[i].yxResourceSelfRelationsForSuperiorResourceId[j].yxResourceBySublevelResourceId.resourceName%>
+		    </option>
+	    <% } %>
+	<% } %>
+<% } %>
