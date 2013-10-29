@@ -16,7 +16,7 @@ Describe: user_setting_module.
 
                 <div class="actions">
 
-                    <a class="btn blue employeeInfo" href="javascript:;"><i class="icon-plus"></i> 新增用户</a>
+                    <a class="btn blue" id="addEmBtn" href="javascript:;"><i class="icon-plus"></i> 新增用户</a>
 
                     <div class="btn-group">
 
@@ -129,11 +129,12 @@ Describe: user_setting_module.
                     { 
                         "mData": "employeeName",
                         "mRender": function(data,type,full) {
-                            return '<a class="emplyeeInfoLink" href="'+full+'">'+data+'</a>';
+                            return '<a class="emplyeeInfoLink" href="javascript:;" id="'+full.employeeId+'">'+data+'</a>';
                         }
                      },
                     { "mData": "employeeEmail" },
-                    { "mData": "employeeMobilePhoneMaster" }
+                    { "mData": "employeeMobilePhoneMaster" },
+
                 ]
             }];
         }
@@ -141,6 +142,9 @@ Describe: user_setting_module.
         
         //点部门刷部门用户列表
         $("#deptlist li a").on('click',function(){
+            var tp = $(this).parent('li');
+            tp.addClass('active').siblings().removeClass('active');
+
             $("#employeeInfo").removeClass('active');
             $("#employeeList").addClass('active');
 
@@ -154,28 +158,35 @@ Describe: user_setting_module.
                 "columns":
                 [
                     { "mData": "employeeId" },
-                    { "mData": "employeeName" },
+                    { "mData": "employeeName",
+                    "mRender": function(data,type,full) {
+                            return '<a class="emplyeeInfoLink" href="javascript:;" id="'+full.employeeId+'">'+data+'</a>';
+                        }
+                     },
                     { "mData": "employeeEmail" },
-                    { "mData": "employeeMobilePhoneMaster" }
+                    { "mData": "employeeMobilePhoneMaster" },
+                    
                 ]
                 }
             ];      
             datableload(urljasonfix.employeeList,urlfix);      
         })
 
-        //return false;
         //新增用户表单
-        if(!urljasonfix.employeeInfo) {
-            urljasonfix.employeeInfo =
+        $("#addEmBtn").on('click',function(){
+            $("#employeeInfo").addClass('active');
+            $("#employeeList").removeClass('active');
+
+             urljasonfix.employeeInfo =
             [
                 {"ra":"employeeInfo",
                 "dir":"Set/BI/employeeinfo",
                 "dif":'',
-                "p":{"userid":""}
+                "p":{"employeeId":""}
                 }
             ];
-        }
-        yixunload(urljasonfix.employeeInfo,urlfix);
+            yixunload(urljasonfix.employeeInfo,urlfix);
+        })
 
     });
 

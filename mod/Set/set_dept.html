@@ -19,7 +19,7 @@ Describe: user_dept_module.
 
 					<div class="actions">
 
-                        <a class="btn blue user-set" id="btn-add" href="javascript:;"><i class="icon-plus"></i> 新增部门</a>
+                        <a class="btn blue" id="addDeptBtn" href="javascript:;"><i class="icon-plus"></i> 新增部门</a>
 
 						<!-- <a class="btn green user-set" href="javascript:;"><i class="icon-cog"></i> 职位职称设置</a>  -->                       
 
@@ -135,7 +135,10 @@ Describe: user_dept_module.
         //点部门刷部门详细信息
         $("#deptlist li a").on('click',function(){
             $("#deptlist").show();
-            
+
+            var tp = $(this).parent('li');
+            tp.addClass('active').siblings().removeClass('active');
+
             var deptid = $(this).attr('id');
              urljasonfix.deptinfo =
             [{
@@ -149,7 +152,7 @@ Describe: user_dept_module.
             
         })
 
-        return false;
+        //return false;
 
 		$('.colorpicker-default').colorpicker({
             format: 'hex'
@@ -166,10 +169,10 @@ Describe: user_dept_module.
 
 		
 
-		//点击切换效果
-        $("#btn-add").click(function(){
-            $(".user-set").hide();
-            $("#btn-set").show();    
+		//点击新增部门
+        $("#addDeptBtn").click(function(){
+            /*$(".user-set").hide();
+            $("#btn-set").show();*/    
            $(this).parent().prev(".caption").html('<i class="icon-edit"></i> 新增部门');
             $("div.tabbable").effect('drop',{direction:'left',mode:'hide'},400,function(){
                 $("#addDeptForm").show();

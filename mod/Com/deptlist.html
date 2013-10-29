@@ -5,7 +5,8 @@ Describe: deptlist_module
 -->
 <% for (var i = 0, l = serverdata.length; i < l; i++) { %>
 
-    <li><a href="javascript:;" data-toggle="tab" id="<%=serverdata[i].departmentId%>"><%=serverdata[i].departmentName%></a></li>
+    <li><a href="javascript:;" data-toggle="tab" id="<%=serverdata[i].departmentId%>">
+    <%=serverdata[i].departmentName%></a></li>
 
 <% } %>
 <script type="text/javascript">

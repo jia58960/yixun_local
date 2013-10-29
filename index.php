@@ -448,8 +448,6 @@
 	<script type="text/javascript" src="media/js/jquery.form.js"></script>
 
 	<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
-
-	<script src="media/js/form-validation.js"></script>
 	
 	<!--日期处理插件 end-->
 	<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
@@ -526,7 +524,7 @@
 		    	m:"2"
 	    	}];
 		}
-		
+
 	    yixunload(urljasonfix.Db_m,urlfix);
 	    
 	    //加载个人头部信息

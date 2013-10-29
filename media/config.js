@@ -157,6 +157,7 @@ function datableload(paras_org,urlfix_org){
 	            ["5", "15", "20", "所有"] // change per page values here
 	        ],
 	        "aoColumns": paras.columns,
+	        //"aoColumnDefs": paras.columnDefs,
 	        "iDisplayLength":5,
 	        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>", //附加功能T<'clear'>lfrtip
 	        "sPaginationType": "bootstrap",//翻页样式

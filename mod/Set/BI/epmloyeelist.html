@@ -24,27 +24,25 @@
 
 $(function(){
 
- /*  $('.userlist_table').dataTable({
-        "bProcessing": true,
-        "bServerSide": true,
-        "aLengthMenu": [
-            [5, 15, 20, -1],
-            ["5", "15", "20", "所有"] // change per page values here
-        ],
-        "sAjaxSource": "http://10.188.192.200:8080/YIXUN_1.5_EE/department/getEmployeePage?deptId=4",
-        "iDisplayLength":5,
-        "aoColumns": 
-        [
-            { "mData": "employeeId", "sClass": "center" },
-            { "mData": "employeeName", "sClass": "center" },
-            { "mData": "employeeNamePinyin", "sClass": "center" },
-            { "mData": "employeeMobilePhoneMaster", "sClass": "center"}
-        ],
-        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-        "sPaginationType": "bootstrap",//翻页样式
-    });
-    
-   */
+    var urlfix = "<%=urlfix%>";
+    var urljasonfix = eval(urlfix);
+
+     $("#employeeList_dt .emplyeeInfoLink").live("click",function(){
+            $("#employeeInfo").addClass('active');
+            $("#employeeList").removeClass('active');
+            var emId = $(this).attr('id');
+           
+            urljasonfix.employeeInfo =
+            [
+                {"ra":"employeeInfo",
+                "dir":"Set/BI/employeeinfo",
+                "dif":'department/getEmployee',
+                "p":{"employeeId":emId}
+                }
+            ];
+            
+            yixunload(urljasonfix.employeeInfo,urlfix);
+        });
 
 });
     
