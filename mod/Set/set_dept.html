@@ -159,7 +159,6 @@ Describe: user_dept_module.
         })
 
 		//点击新增部门
-
         $("#addDeptBtn").click(function(){
 
             $("#deptInfo").addClass('active');
@@ -177,6 +176,12 @@ Describe: user_dept_module.
             yixunload(urljasonfix.deptInfo,urlfix);
 
         });
+
+        //切换到部门常规设置
+        $("#deptSet").on('click',function(){
+            $("#deptInfo").addClass('active');
+            $("#deOthInfo").removeClass('active');
+        })
 		
 	});
 

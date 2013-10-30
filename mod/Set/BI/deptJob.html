@@ -1,0 +1,42 @@
+<h5 class="form-section">职称设置</h5>
+
+	<div class="clearfix">
+
+		<a href="#addPost" class="btn green">
+
+			<i class="icon-plus"></i> 新增职称 
+
+		</a>
+
+	</div>
+
+	<table class="table table-striped table-bordered table-advance dataTable table-hover" id="depJob_dt">
+
+		<thead>
+
+			<tr>
+
+				<th><i class="icon-briefcase"></i> ID</th>
+
+				<th><i class="icon-user"></i> 职称名</th>
+
+				<th><i class="icon-user"></i> 操作</th>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+			<%for(var i = 0;i<serverdata.length;i++){%>
+			<tr>
+				<td><%=serverdata[i].jobTitleId%></td>
+				<td><%=serverdata[i].jobTitleName%></td>
+				<td>
+					<a class="btn blue" data="<%=serverdata[i].jobTitleId%>" href="">编辑</a>
+					<a class="btn red" data="<%=serverdata[i].jobTitleId%>" href="">删除</a>
+				</td>	
+			</tr>
+			<%}%>
+		</tbody>
+
+	</table>

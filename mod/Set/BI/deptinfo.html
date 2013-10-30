@@ -18,7 +18,7 @@ Describe: deptinfo
     </div>
 <% if(serverdata.departmentName){%>
     <div class="pull-right" style="padding:10px 14px">
-        <a class="btn icn-only green" id="depOthBtn" href="#" data-dept="<%=serverdata.departmentName%>"><i class="m-icon-swapleft m-icon-white"></i> 更多设置</a>                          
+        <a class="btn icn-only green" id="depOthBtn" href="#" data-dept="<%=serverdata.departmentId%>"><i class="m-icon-swapleft m-icon-white"></i> 更多设置</a>                          
     </div>
 <%}%>
 </div>
@@ -150,7 +150,7 @@ Describe: deptinfo
 		
 				<div class="controls">
 		
-					<select class="span10 m-wrap chosen" data-placeholder="请选择部门副主管" name="dept_parent" multiple="multiple">
+					<select class="span10 m-wrap chosen" data-placeholder="请选择部门副主管" name="dept_fu[]" multiple="multiple">
 
 						<option value="">请选择</option>
 
@@ -176,7 +176,7 @@ Describe: deptinfo
 		
 				<div class="controls">
 		
-					<select class="span10 m-wrap chosen" data-placeholder="请选择部门主管" name="dept_parent" multiple="multiple">
+					<select class="span10 m-wrap chosen" data-placeholder="请选择部门主管" name="dept_zhu[]" multiple="multiple">
 
 						<option value="">请选择</option>
 
@@ -201,21 +201,21 @@ Describe: deptinfo
             <div class="span6">
             	<div class="control-group">
 		
-				<label class="control-label">部门直管1</label>
+				<label class="control-label">部门直管</label>
 		
 					<div class="controls">
 			
-						<select class="span10 m-wrap" name="dept_parent">
+						<select class="span10 m-wrap chosen" name="dept_direct[]" multiple="multiple">
 							
 						 	<option value="">请选择</option>
 							
-							<option value="Category 1" selected="selected">王乐</option>						
+							<option value="1" selected="selected">王乐</option>						
 							
-							<option value="Category 1">张轩樵</option>
+							<option value="2">张轩樵</option>
 							
-							<option value="Category 2">余杰</option>
+							<option value="3">余杰</option>
 							
-							<option value="Category 3">贺洁华</option>
+							<option value="4" selected="selected">贺洁华</option>
 
 						</select>
 			
@@ -224,97 +224,7 @@ Describe: deptinfo
 				</div>
         	</div>
 
-        <div class="span6">
-			<div class="control-group">
-		
-				<label class="control-label">部门直管2</label>
-		
-				<div class="controls">
-		
-					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
-
-						<option value="" selected="selected">请选择</option>
-
-						<option value="Category 1">王乐</option>						
-
-						<option value="Category 1">张轩樵</option>
-
-						<option value="Category 2">余杰</option>
-
-						<option value="Category 3">贺洁华</option>
-
-					</select>
-		
-				</div>
-		
-			</div>
-        </div>
-    </div> 
-
-	<div class="row-fluid">
-	
-        <div class="span6">
-
-        	<div class="control-group">
-	
-				<label class="control-label">部门直管3</label>
-	
-				<div class="controls">
-		
-					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
-
-						<option value="">请选择</option>
-
-						<option value="Category 1" selected="selected">王乐</option>						
-
-						<option value="Category 1">张轩樵</option>
-
-						<option value="Category 2">余杰</option>
-
-						<option value="Category 3">贺洁华</option>
-
-					</select>
-		
-				</div>
-	
-			</div>
-
-    	</div>
-
-
-        <div class="span6">
-
-			<div class="control-group">
-		
-				<label class="control-label">部门直管4</label>
-		
-				<div class="controls">
-		
-					<select class="span10 m-wrap" data-placeholder="请选择部门" name="dept_parent">
-
-						<option value="" selected="selected">请选择</option>
-
-						<option value="Category 1">王乐</option>						
-
-						<option value="Category 1">张轩樵</option>
-
-						<option value="Category 2">余杰</option>
-
-						<option value="Category 3">贺洁华</option>
-
-					</select>
-		
-				</div>
-		
-			</div>
-
-        </div>
-
-	</div> 
-
-	<div class="row-fluid">
-		
-            <div class="span6">
+        	<div class="span6">
 
             	<div class="control-group">
 		
@@ -322,19 +232,19 @@ Describe: deptinfo
 		
 					<div class="controls">
 			
-						<select class="span10 m-wrap chosen" data-placeholder="部门分管" name="dept_parent" multiple="multiple">
+						<select class="span10 m-wrap chosen" data-placeholder="部门分管" name="dept_seperat[]" multiple="multiple">
 
 							<option value="">请选择</option>
 
-							<option value="Category 1">王乐</option>						
+							<option value="8">王乐</option>						
 
-							<option value="Category 1" selected="selected">张轩樵</option>
+							<option value="9" selected="selected">张轩樵</option>
 
-							<option value="Category 2">余杰</option>
+							<option value="5">余杰</option>
 
-							<option value="Category 3">贺洁华</option>
+							<option value="6">贺洁华</option>
 
-							<option value="Category 4" selected="selected">董事长</option>																
+							<option value="3" selected="selected">董事长</option>																
 
 						</select>
 			
@@ -345,6 +255,7 @@ Describe: deptinfo
         	</div>
 
     </div> 
+ 
 
     <div class="form-actions">
          
@@ -371,17 +282,31 @@ $(function(){
 	$("#depOthBtn").on('click',function(){
 
 		var deptId = $(this).attr('data-dept');
+
         $("#deptInfo").removeClass('active');
         $("#deOthInfo").addClass('active');
 
-        urljasonfix.deOthInfo =
+        //加载部门职称
+        urljasonfix.depJob =
 	    [{
-	        "ra":"deOthInfo",
-	        "dir":"Set/BI/deptothinfo",
-	        "dif":'',
-	        
+	        "ra":"depJob",
+	        "dir":"Set/BI/deptjob",
+	        "dif":'department/listDepartmentJobTitles',
+	        "p":{"deptId":deptId}
 	    }];
-	    yixunload(urljasonfix.deOthInfo,urlfix);
+
+	    yixunload(urljasonfix.depJob,urlfix);
+
+	    return false;
+	    //加载虚拟部门
+	    urljasonfix.depVirt =
+	    [{
+	        "ra":"depVirt",
+	        "dir":"Set/BI/deptvirt",
+	        "dif":'',
+	        "p":{"deptId":deptId}
+	    }];
+	    yixunload(urljasonfix.depVirt,urlfix);
 
     })
 
@@ -473,8 +398,8 @@ $(function(){
 
                 var data = $(this).serialize(); //序列化表单数据
                 console.log(data);
-                return false;
 
+                return false;
                 $.getJSON(
                     "http://10.188.192.200:8080/YIXUN_1.5_EE/department/addDepartment?jsoncallback=?", data,
                     function(json) {

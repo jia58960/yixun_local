@@ -1,0 +1,167 @@
+<!--
+Author  : zhangjia
+Date    : 20131030
+Describe: deptothinfo
+-->
+	<h5 class="form-section">部门虚拟组设置</h5>
+
+	<div class="clearfix">
+
+			<a href="#addGroup" class="btn green" data-toggle="modal"><i class="icon-plus"></i> 添加虚拟组</a>
+		
+	</div>
+	
+	<table class="table table-striped table-bordered table-advance table-hover">
+
+		<thead>
+
+			<tr>
+
+				<th><i class="icon-briefcase"></i> 组ID</th>
+
+				<th><i class="icon-user"></i> 组名</th>
+
+				<th><i class="icon-user"></i> 组长</th>
+
+				<th><i class="icon-edit"></i> 组内成员</th>
+
+				<th><i class="icon-edit"></i> 操作</th>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<tr>
+
+				<td>1</td>
+
+				<td><a href="#">拓展一组</a></td>
+
+				<td>方霜蓉</td>
+
+				<td>陈家奎、谌夫琦、方霜蓉、祝春燕</td>
+
+				<td><a href="#" class="btn mini purple"><i class="icon-edit"></i> Edit</a>
+					<a href="#" class="btn mini black"><i class="icon-trash"></i> Delete</a>
+				</td>
+
+			</tr>
+
+			<tr>
+
+				<td>2</td>
+
+				<td><a href="#">拓展二组</a></td>
+
+				<td>陈炳龙</td>
+
+				<td>张钧曦、吴伟基、陈忠涛、陈炳龙</td>
+
+				<td><a href="#" class="btn mini purple"><i class="icon-edit"></i> Edit</a>
+					<a href="#" class="btn mini black"><i class="icon-trash"></i> Delete</a>
+				</td>
+
+			</tr>
+
+		</tbody>
+
+	</table>
+	
+	<!--模态窗口-->
+	<div id="addGroup" class="modal hide fade" tabindex="-1" data-width="760">
+
+		<div class="modal-header">
+
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+			<h3>添加部门虚拟组</h3>
+
+		</div>
+
+		<div class="modal-body">
+
+			<div class="control-group">
+
+				<label class="control-label">小组名<span class="required">*</span></label>
+
+				<div class="controls">
+					<input type="text" name="dept_sort" class="span6 m-wrap">
+					
+				</div>
+
+			</div>													
+
+			<div class="control-group">
+
+				<label class="control-label">小组组长<span class="required">*</span></label>
+
+				<div class="controls">
+					<select class="span5 m-wrap" data-placeholder="选择组内成员" name="dept_parent">
+
+						<option value="Category 1">陈家奎</option>
+
+						<option value="Category 2">吴伟基</option>
+
+						<option value="Category 3">祝春燕</option>
+
+						<option value="Category 3">方霜蓉</option>
+
+					</select>
+
+				</div>
+
+			</div>
+
+				
+
+			
+
+			<div class="control-group">
+
+				<label class="control-label">小组成员<span class="required">*</span></label>
+
+				<div class="controls">
+					<select class="m-wrap chosen" data-placeholder="选择组内成员" multiple="multiple" name="dept_parent">
+
+						<option value="Category 1">陈家奎</option>
+
+						<option value="Category 2">吴伟基</option>
+
+						<option value="Category 3">祝春燕</option>
+
+						<option value="Category 3">方霜蓉</option>
+
+						<option value="Category 3">方霜蓉</option>
+
+						<option value="Category 3">方霜蓉</option>
+
+					</select>
+
+				</div>
+
+			</div>
+
+				
+
+
+		</div>
+
+		<div class="modal-footer">
+
+			<button type="button" data-dismiss="modal" class="btn">Close</button>
+
+			<button type="button" class="btn blue">Save changes</button>
+
+		</div>
+
+	</div>
+
+
+	
+<script type="text/javascript">
+	
+		
+		
+</script>
