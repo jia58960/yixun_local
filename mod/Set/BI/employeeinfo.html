@@ -27,7 +27,6 @@ Describe: userinfo
 
 <form action="" id="emInfoForm" class="form-horizontal">
 
-
 <h5 class="form-section">基本信息</h5>
 
 <div class="row-fluid">
@@ -76,6 +75,35 @@ Describe: userinfo
 
 </div>
 
+
+<div class="row-fluid">
+
+    <div class="span12">
+
+        <div class="control-group">
+ 
+            <label class="control-label">初始密码<span class="required">*</span></label>
+     
+            <div class="controls">
+                <div class="input-icon left">
+
+                    <i class="icon-lock"></i>
+
+                    <input type="password" name="userPassword" value="111111" class="span6 m-wrap"  />
+
+                    <p class="help-block">密码默认为6个1</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <div class="row-fluid">
     <div class="span6">
         <div class="control-group">
@@ -103,7 +131,7 @@ Describe: userinfo
  
             <label class="radio">
  
-                <input type="radio" name="yxSex" value="1"
+                <input type="radio" name="sexId" value="1"
                 <% if (serverdata.yxSex && serverdata.yxSex.sexId == 1) {%>
                  checked 
                 <%}%> />
@@ -114,7 +142,7 @@ Describe: userinfo
  
             <label class="radio">
  
-                <input type="radio" name="yxSex" value="2"
+                <input type="radio" name="sexId" value="2"
                 <% if (serverdata.yxSex && serverdata.yxSex.sexId == 2) {%>
                  checked
                  <%}%> />
@@ -163,7 +191,7 @@ Describe: userinfo
      
             <div class="controls">
      
-                <input type="text" placeholder="常用手机号且信息可达" name="employeeMobilePhoneMaster" class=" span10 m-wrap">
+                <input type="text" placeholder="常用手机且信息可达" name="employeeMobilePhoneMaster" class=" span10 m-wrap">
      			<p class="help-block">
      				注：该手机号将用于系统内部的重要信息提醒，请务必认真填写
      			</p>
@@ -210,7 +238,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="departementId" id="Set_f">
+                <select class="span10 m-wrap" name="departementId[]" id="Set_f">
                 
                    <option value="">-请选择-</option>               
                 
@@ -229,7 +257,7 @@ Describe: userinfo
                      
         <div class="controls">
                      
-            <select class="span10 m-wrap" name="jobTitleId" id="fJob">
+            <select class="span10 m-wrap" name="jobTitleId[]" id="fJob">
                      
                 <option value="">-选择部门-</option>
                 
@@ -251,7 +279,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="departementId" id="Set_s">
+                <select class="span10 m-wrap" name="departementId[]" id="Set_s">
 
                     <option value="">-请选择-</option>               
                          
@@ -269,7 +297,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="jobTitleId" id="sJob">
+                <select class="span10 m-wrap" name="jobTitleId[]" id="sJob">
                          
                     <option value="">-选择部门-</option>
                          
@@ -592,8 +620,8 @@ $(document).ready(function() {
         if($("#emInfoForm").valid()){
 
             $('#emInfoForm').submit(function() {              
-               
                 var data = $(this).serialize(); //序列化表单数据
+                console.log(data);
                 $.getJSON(
                     "http://10.188.192.200:8080/YIXUN_1.5_EE/department/addEmployee?jsoncallback=?", data,
                     function(json) {

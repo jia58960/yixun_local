@@ -21,10 +21,6 @@ Describe: user_dept_module.
 
                         <a class="btn blue" id="addDeptBtn" href="javascript:;"><i class="icon-plus"></i> 新增部门</a>
 
-						<!-- <a class="btn green user-set" href="javascript:;"><i class="icon-cog"></i> 职位职称设置</a>  -->                       
-
-                        <a style="display:none" class="btn green" id="btn-set" href="javascript:;"><i class="icon-cog"></i> 部门设置</a>
-
                     </div>
 
 				</div>
@@ -49,22 +45,34 @@ Describe: user_dept_module.
 
                                 <div class="tab-content">
 
-									<div id="deptinfo" class="tab-pane active" style="min-height:150px;">
-										<div class="clearfix">
-
-											<div class="pull-right">
-
-												<button class="btn green" id="Setting_dept">其他设置 <i class="m-icon-swapright m-icon-white"></i></button>
-
-											</div>
-
-										</div>
-
+									<div id="deptInfo" class="tab-pane active" style="min-height:150px;">
+                                        <!--部门常规信息编辑-->
                                 	</div>  
 
-	                                <div class="tab-pane active" id="Setting_deptSetting">
-	                                    
-	                         
+	                                <div class="tab-pane" id="deOthInfo">
+
+	                                    <div class="row-fluid">
+
+                                            <div class="pull-left" style="padding:10px 14px">
+
+                                                <h4>其它设置</h4>
+
+                                            </div>
+
+                                            <div class="pull-right" style="padding:10px 14px">
+                                                <a class="btn icn-only green" id="deptSet" href="#"><i class="m-icon-swapleft m-icon-white"></i> 返回</a>                          
+                                            </div>
+
+                                        </div>
+                                        
+                                        <div id="depJob">
+                                            <!--职称放置-->
+                                        </div>
+
+                                        <div id="depVirt">
+                                            
+                                        </div>
+
 	                                </div>
 
                             </div>
@@ -95,7 +103,7 @@ Describe: user_dept_module.
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script type="text/javascript">
 
-		jQuery(document).ready(function() {   
+	jQuery(document).ready(function() {   
 
         var urlfix = "<%=urlfix%>";
         console.log(urlfix);
@@ -117,21 +125,19 @@ Describe: user_dept_module.
         yixunload(urljasonfix.deptlist,urlfix);  
 
        	//部门信息
-        if(!urljasonfix.deptinfo){
+        if(!urljasonfix.deptInfo){
 
-            urljasonfix.deptinfo =
+            urljasonfix.deptInfo =
             [{
-                "ra":"deptinfo",
-                "dir":"Set/BI/deptinfo",
+                "ra":"deptInfo",
+                "dir":"Set/BI/deptInfo",
                 "dif":'department/getDepartment',
                 "p":{"deptId":'4'}
                 }
             ];            
         }
-        yixunload(urljasonfix.deptinfo,urlfix);  
+        yixunload(urljasonfix.deptInfo,urlfix);  
         
-        
-
         //点部门刷部门详细信息
         $("#deptlist li a").on('click',function(){
             $("#deptlist").show();
@@ -140,60 +146,39 @@ Describe: user_dept_module.
             tp.addClass('active').siblings().removeClass('active');
 
             var deptid = $(this).attr('id');
-             urljasonfix.deptinfo =
+             urljasonfix.deptInfo =
             [{
-                "ra":"deptinfo",
-                "dir":"Set/BI/deptinfo",
+                "ra":"deptInfo",
+                "dir":"Set/BI/deptInfo",
                 "dif":'department/getDepartment',
                 "p":{"deptId":deptid}
                 }
             ];  
-            yixunload(urljasonfix.deptinfo,urlfix);            
+            yixunload(urljasonfix.deptInfo,urlfix);            
             
         })
-
-        //return false;
-
-		$('.colorpicker-default').colorpicker({
-            format: 'hex'
-        });
-
-		FormValidation.init();
-
-		$(".chosen").each(function () {
-            $(this).chosen({
-            	no_results_text: "没有匹配结果",
-                allow_single_deselect: $(this).attr("data-with-diselect") === "1" ? true : false
-            });
-        });
-
-		
 
 		//点击新增部门
+
         $("#addDeptBtn").click(function(){
-            /*$(".user-set").hide();
-            $("#btn-set").show();*/    
-           $(this).parent().prev(".caption").html('<i class="icon-edit"></i> 新增部门');
-            $("div.tabbable").effect('drop',{direction:'left',mode:'hide'},400,function(){
-                $("#addDeptForm").show();
-            });
-            
+
+            $("#deptInfo").addClass('active');
+
+            $("#deOthInfo").removeClass('active');
+
+            urljasonfix.deptInfo =
+            [
+                {"ra":"deptInfo",
+                "dir":"Set/BI/deptinfo",
+                "dif":'',
+                "p":{"deptId":""}
+                }
+            ];
+            yixunload(urljasonfix.deptInfo,urlfix);
 
         });
 		
-        $("#btn-set").click(function(){
-            $(".user-set").show(); 
-            $(this).hide();
-            $("#addDeptForm").effect('drop',{direction:'right',mode:'hide'},600,function(){
-                $("div.tabbable").effect('drop',{direction:'left',mode:'show'},400);
-            });
-            
-
-            $(this).parent().prev(".caption").html('<i class="icon-user"></i> 部门设置');
-        })
-        
-
-		});
+	});
 
 	</script>
 
