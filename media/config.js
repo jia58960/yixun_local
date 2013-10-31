@@ -91,8 +91,8 @@ function yixunload(paras_org,urlfix_org) {
             type:'post',
             async:false, 
             data:paras.p,
-            xhrFields: {
-                withCredentials: true
+            beforeSend: function(xhr) {
+              xhr.withCredentials = true;
             },
             success:function(d){
             	console.log(d);

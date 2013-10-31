@@ -28,8 +28,12 @@ $(function(){
     var urljasonfix = eval(urlfix);
 
      $("#employeeList_dt .emplyeeInfoLink").live("click",function(){
+
+            //alert('2345');
             $("#employeeInfo").addClass('active');
+
             $("#employeeList").removeClass('active');
+
             var emId = $(this).attr('id');
            
             urljasonfix.employeeInfo =

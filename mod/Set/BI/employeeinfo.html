@@ -52,21 +52,40 @@ Describe: userinfo
     </div>
     
     <input type="hidden" name="employeeId" value="<%=serverdata.employeeId%>" />
-
+    
     <div class="span6">
         <div class="control-group">
  
         <label class="control-label">用户名<span class="required">*</span></label>
  
         <div class="controls">
-            
-            <div class="input-icon left">
+            <%if(serverdata.krUserEmployeeRelations.length!=0){%>
+                        
+                    <%for(var u = 0;u<serverdata.krUserEmployeeRelations.length;u++){%>
+                        
+                        <div class="input-icon left">
 
-                <i class="icon-user"></i>
+                            <i class="icon-user"></i>
 
-                <input type="text" name="userName" placeholder="可为姓名,用于系统登录" class="span10 m-wrap " value="<%=serverdata.employeeName%>" />
+                            <input type="text" name="userName" class="span10 m-wrap " value="<%=serverdata.krUserEmployeeRelations[u].yxUser.userName%>" />
 
-            </div>
+                        </div>
+
+                        <input type="hidden" name="userId"> value="<%=serverdata.krUserEmployeeRelations[u].yxUser.userId%>" />
+
+                    <%}%>
+
+            <%}else{%>
+                <div class="input-icon left">
+
+                    <i class="icon-user"></i>
+
+                    <input type="text" name="userName" placeholder="用于系统登录" class="span10 m-wrap" />
+
+                </div>
+
+            <%}%>
+
         </div>
  
     </div>
@@ -227,7 +246,8 @@ Describe: userinfo
     </div>
     </div>
 </div>
-      
+
+     
 <div class="row-fluid">
 
     <div class="span6">
@@ -313,8 +333,12 @@ Describe: userinfo
 <div class="row-fluid">
 
 
-<% if(serverdata.krPositionEmployeeRelations){
-    for(var p = 0;p < serverdata.krPositionEmployeeRelations.length;p ++){%>
+<% if(serverdata.krPositionEmployeeRelations.length!=0) {
+
+    var positions = '';
+    for(var p = 0;p < serverdata.krPositionEmployeeRelations.length;p ++){
+         positions = positions + serverdata.krPositionEmployeeRelations[p].krPosition.positionName+';';
+    }%>
     <div class="span6">
     <div class="control-group">
 
@@ -323,17 +347,18 @@ Describe: userinfo
         <div class="controls">
             
             <input type="text" name="jobTitleId" class="span10 m-wrap" disabled="disabled"
-             value="<%=serverdata.krPositionEmployeeRelations[p].krPosition.positionName %>">         
+             value="<%=positions%>">         
 
             <p class="help-block">
                 注：请在"部门设置"中对职位信息进行设置
             </p>
+
         </div>
 
     </div>
 </div>
     
-<%}}%>
+<%}%>
 
 <div class="span6">
 
@@ -453,6 +478,16 @@ Describe: userinfo
                                              
 </form>
 
+<% if(serverdata.krDepartmentEmployeeRelations.length!=0){
+    var count = 0;
+for(var d = 0;d < serverdata.krDepartmentEmployeeRelations.length;d++)%>
+    count++;
+    <input type="hidden" value="<%=serverdata.krDepartmentEmployeeRelations[d].krDepartment.departmentId%>" id="<%=dept+count+'Id'%>">
+
+    <input type="hidden" value="<%=serverdata.krDepartmentEmployeeRelations[d].krEmployeeJobTitle.jobTitleId%>" id="<%=job+count+'Id'%>">
+<%}%>
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -464,8 +499,7 @@ $(document).ready(function() {
 
     handleDatePickers('.date-picker','');
 
-    //FormValidation.init();  
-
+    //返回用户列表
     $("#emlistBtn").on('click',function(){
 
         $("#employeeInfo").removeClass('active');
@@ -527,11 +561,7 @@ $(document).ready(function() {
 
     })
 
-    $("#select2_sample5").select2({
-        tags: [{"id":"1","text":"图书管理员"},{"id":"2","text":"晨珀会计"}, {"id":"3","text":"前台文员"}, {"id":"4","text":"出纳"}]
-    });
-
-
+    //验证表单
     $("#emInfoForm").validate({
         errorElement: 'span', //default input error message container
         errorClass: 'help-inline', // default input error message class

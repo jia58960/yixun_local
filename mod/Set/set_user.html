@@ -99,7 +99,7 @@ Describe: user_setting_module.
         console.log(urlfix);
 
         var urljasonfix = eval(urlfix);
-        
+
         //部门列表
         if(!urljasonfix.deptlist){
 
@@ -140,7 +140,7 @@ Describe: user_setting_module.
         datableload(urljasonfix.employeeList,urlfix);        
         
         //点部门刷部门用户列表
-        $("#deptlist li a").on('click',function(){
+        $("#deptlist li a").on('click',function() {
             var tp = $(this).parent('li');
             tp.addClass('active').siblings().removeClass('active');
 

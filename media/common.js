@@ -93,3 +93,8 @@ var handleNoty = function(text,type){
       theme: 'defaultTheme'
     });
 }
+
+//select2简约版
+var handleSelectEasy = function(selector){
+  $(selector).chosen();
+}
