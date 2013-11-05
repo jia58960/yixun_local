@@ -81,7 +81,7 @@
 
 	<link  href="media/css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" type="text/css"/>
 
-	<link  href="media/css/jquery.qtip.min.css" rel="stylesheet" type="text/css"/> 
+	<link  href="media/css/selectBox.css" rel="stylesheet" type="text/css"/> 
 
 	<!-- END PAGE LEVEL STYLES -->
 	
@@ -524,7 +524,6 @@
 		    	m:"2"
 	    	}];
 		}
-
 	    yixunload(urljasonfix.Db_m,urlfix);
 	    
 	    //加载个人头部信息

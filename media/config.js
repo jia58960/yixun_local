@@ -18,6 +18,7 @@ if(urlStr ==''){
 
 function flushurl(){
 	//var urlStr = yxUrlEncode(JSON.stringify(urlJSON)); URL加密 上线前打开
+	//alert('刷url了');
 	var urlStr = JSON.stringify(urlJSON);
 	window.history.pushState(null,null,"?"+urlStr);
 }
@@ -34,8 +35,12 @@ function yixunload(paras_org,urlfix_org) {
 	var urlfix = urlfix_org + "." + paras.ra; //urlfix_org判断
 	eval(urlfix + "= paras_org");
 	urlfix += "[0]";
+	/*alert('222');
+	console.log(urlJSON);*/
 	flushurl();
-    
+	/*alert('333');
+    console.log(urlJSON);*/
+    //return false;
 	var yxloadtmp = function(d) {
 		$.ajax({
             url:io + "mod/" + paras.dir,
@@ -80,7 +85,7 @@ function yixunload(paras_org,urlfix_org) {
 	
 	if(paras.dif){
 		var datapath = io_java + paras.dif;
-		console.log(datapath);
+		//console.log(datapath);
 	}else{
 		var datapath = io + "mod/" + paras.dir + "_D";
 		
@@ -95,8 +100,8 @@ function yixunload(paras_org,urlfix_org) {
               xhr.withCredentials = true;
             },
             success:function(d){
-            	console.log(d);
-            	console.log('有数据');
+            	//console.log(d);
+            	//console.log('有数据');
             	if(d.resultCode == 100){
             		App.ajaxblockUI(d.resultCode,d.resultReason,
 			            setTimeout(function() {

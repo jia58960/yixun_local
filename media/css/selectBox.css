@@ -1,0 +1,93 @@
+	.tab-pane ul{
+		margin:0;
+	}
+	.tab-pane ul li{
+		list-style:none;
+		line-height:25px;
+		text-align:center;
+		border-bottom:solid 1px #E2DCDC;
+	}
+	.tab-pane ul .seuser{
+		background:#ccc;
+	}
+	.tab-pane ul li:hover{
+		background:#E3E1E7;
+	}
+	.tab-pane ul li:last-child{
+		border-bottom:solid 1px transparent;
+	}
+	
+	
+	.select-container-multi .select-choices {
+		height: auto !important;
+		height: 1%;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		border: 1px solid #e5e5e5;
+		cursor: text;
+		overflow: hidden;
+		background-color: #ffffff;
+	}
+
+	.select-container-multi .select-choices .select-search-choice {
+		padding: 3px 5px 3px 18px;
+		margin: 6px 0 0px 5px;
+		position: relative;
+		line-height: 13px;
+		color: #333;
+		cursor: default;
+		border: 1px solid #e5e5e5;
+		-webkit-background-clip: padding-box;
+		-moz-background-clip: padding;
+		background-clip: padding-box;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-color: #ffffff;
+	}
+
+	.select-container-multi .select-choices li {
+		float: left;
+		list-style: none;
+	}
+	.select-container-multi .select-choices .select-search-choice {
+		line-height: 13px;
+		color: #333;
+		cursor: pointer;
+	}		
+	.select-container-multi .select-choices .select-search-choice i{
+		position: absolute;
+		top: 3px;
+		left: 2px;
+	}
+
+	.select-container-multi .select-choices .select-search-field {
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+	}
+	
+	.select-container-multi .select-choices .select-search-field input {
+		padding: 5px;
+		margin: 1px 0;
+		font-family: sans-serif;
+		font-size: 100%;
+		color: #666;
+		outline: 0;
+		border: 0;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+		background: transparent !important;
+	}
+	.select-container-multi .select-choices .delall{
+		line-height:32px;
+		position:absolute;
+		top:0;
+		right:4px;
+		cursor:pointer;
+	}

@@ -29,7 +29,7 @@
 		
 
 		//页面存放选择框选择的人的容器
-        var selectContainer = "<a class='btn green' href='#" + opts.selectBox_id + "' data-toggle='modal'>选择人员&nbsp;<i class='m-icon-swapright m-icon-white'></i></a>";
+        var selectContainer = "<a class='btn green' href='#" + opts.selectBox_id + "' data-toggle='modal'>选 <i class='m-icon-swapright m-icon-white'></i></a>";
         selectContainer += "<a class='select-container-multi span4' href='#" + opts.selectBox_id + "' data-toggle='modal'>";
         selectContainer += "<ul class='select-choices'>";
         selectContainer += "<li class='select-search-field'>    <input type='text' placeholder='" + opts.title + "...' autocomplete='off' class='select-input'>  </li>";
@@ -56,37 +56,42 @@
         				selectBox += "<div class='modal-body'><div class='row-fluid'><div class='span12'><div class='tabbable tabbable-custom tabs-left'>";
         				selectBox += "<ul class='nav nav-tabs tabs-left'><li class=''><a href='#tab_" + opts.selectBox_id +"_selected' data-toggle='tab'><i class='icon-cog'></i>已选" + data.type + "</a></li>";
 					
-						for(var i = 0,length = data.department_list.length; i < length; i++){//部门
-							selectBox += "<li class=''><a href='#tab_" + opts.selectBox_id + i + "' data-toggle='tab'><i class='icon-user'></i>" + data.department_list[i].d_name + "</a></li>";
+						for(var i = 0,length = data.length; i < length; i++){//部门
+							selectBox += "<li class=''><a href='#tab_" + opts.selectBox_id + i + "' data-toggle='tab'><i class='icon-user'></i>" + data[i].departmentName + "</a></li>";
 						}
+
 						selectBox += "</ul>";
 						selectBox += "<div class='tab-content'><div class='tab-pane' id='tab_" + opts.selectBox_id +"_selected'>";
 						selectBox += "<p><button class='btn blue' type='button' style='width:100%'>已选" + data.type + " </button></p>";
         				selectBox += "<p><button class='btn green addall' type='button' style='width:100%'><i class='icon-plus'></i>全部添加&nbsp; </button></p>";
         				selectBox += "<p><button class='btn green delall' type='button' style='width:100%'><i class='icon-trash'></i>全部删除&nbsp; </button></p><ul></ul></div>";
 					
-        				for(var i = 0,length = data.department_list.length; i < length; i++){//部门内人员
+        				for(var i = 0,length = data.length; i < length; i++){//部门内人员
 	        				
 	        				selectBox += "<div class='tab-pane' id='tab_" + opts.selectBox_id + i +"' style='background:#eee'>";
 							selectBox += "<p><button class='btn blue' type='button' style='width:100%'>已选" + data.type + " </button></p>";
 	       					selectBox += "<p><button class='btn blue addall' type='button' style='width:100%'><i class='icon-plus'></i>全部添加&nbsp; </button></p>";
 	        				selectBox += "<p><button class='btn green delall' type='button' style='width:100%'><i class='icon-trash'></i>全部删除&nbsp; </button></p><ul>";
-	        				for(var j = 0,length1 = data.department_list[i].d_user_list.length; j < length1; j++){
-	        					var user = data.department_list[i].d_user_list[j];
-	        					selectBox += "<li class='nouser' id='" + user.u_id+ "'>" + user.u_name + "</li>";
+	        				if(data[i].krDepartmentEmployeeRelations.length!=0){
+
+		        				for(var j = 0,length1 = data[i].krDepartmentEmployeeRelations.length; j < length1; j++){
+		        					var user = data[i].krDepartmentEmployeeRelations[j];
+		        					selectBox += "<li class='nouser' id='" + user.krEmployee.employeeId+ "'>" + user.krEmployee.employeeName + "</li>";
+		        				}
+
 	        				}
 	        				selectBox += "</ul></div>";
         				}
 
         				selectBox += "</div></div></div></div></div>";
 						selectBox += "<div class='modal-footer'><button type='button' data-dismiss='modal' class='btn red'>确定</button></div></div>";
-						console.log(selectBox);
+						//console.log(selectBox);
 					
 						$("body").append(selectBox);
 						$("body #" + opts.selectBox_id + " .tab-pane:eq(1)").addClass("active");
 						$("body #" + opts.selectBox_id + " .tabs-left li:eq(1)").addClass("active");
 						//只能单选
-						if(opts.mutipleSelect === "false"){		
+						if(opts.mutipleSelect === "false"){
 
 							$("#"+ opts.selectBox_id +" .addall,#"+ opts.selectBox_id +" .delall").css("display","none");
 							

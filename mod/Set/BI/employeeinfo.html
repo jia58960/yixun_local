@@ -59,7 +59,7 @@ Describe: userinfo
         <label class="control-label">用户名<span class="required">*</span></label>
  
         <div class="controls">
-            <%if(serverdata.krUserEmployeeRelations.length!=0){%>
+            <%if(serverdata.krUserEmployeeRelations && serverdata.krUserEmployeeRelations.length!=0){%>
                         
                     <%for(var u = 0;u<serverdata.krUserEmployeeRelations.length;u++){%>
                         
@@ -71,7 +71,7 @@ Describe: userinfo
 
                         </div>
 
-                        <input type="hidden" name="userId"> value="<%=serverdata.krUserEmployeeRelations[u].yxUser.userId%>" />
+                        <input type="hidden" name="userId" value="<%=serverdata.krUserEmployeeRelations[u].yxUser.userId%>" />
 
                     <%}%>
 
@@ -108,7 +108,7 @@ Describe: userinfo
 
                     <i class="icon-lock"></i>
 
-                    <input type="password" name="userPassword" value="111111" class="span6 m-wrap"  />
+                    <input type="password" name="userPassword" value="111111" class="span6 m-wrap"/>
 
                     <p class="help-block">密码默认为6个1</p>
 
@@ -134,7 +134,7 @@ Describe: userinfo
 
                 <i class="icon-calendar"></i>
 
-                <input name="employeeJoinDate" placeholder="yyyy-MM-dd" class="span10 m-wrap date-picker"  style="cursor:pointer"  type="text" />
+                <input name="employeeJoinDate" placeholder="yyyy-MM-dd" class="span10 m-wrap date-picker"  style="cursor:pointer"  type="text" value="<%=serverdata.employeeJoinDate%>" />
 
             </div>
         </div>
@@ -210,7 +210,7 @@ Describe: userinfo
      
             <div class="controls">
      
-                <input type="text" placeholder="常用手机且信息可达" name="employeeMobilePhoneMaster" class=" span10 m-wrap">
+                <input type="text" placeholder="常用手机且信息可达" name="employeeMobilePhoneMaster" class=" span10 m-wrap" value="<%=serverdata.employeeMobilePhoneMaster%>">
      			<p class="help-block">
      				注：该手机号将用于系统内部的重要信息提醒，请务必认真填写
      			</p>
@@ -234,7 +234,7 @@ Describe: userinfo
 
                 <i class="icon-calendar"></i>
 
-                <input name="employeeBirthday" class="span6 m-wrap date-picker" data-date-viewmode="years" placeholder="yyyy-MM-dd" type="text" style="cursor:pointer" />
+                <input name="employeeBirthday" class="span6 m-wrap date-picker" data-date-viewmode="years" placeholder="yyyy-MM-dd" type="text" style="cursor:pointer" value="<%=serverdata.employeeBirthday%>" />
 
                 <p class="help-block">
      				注：请选择公历生日
@@ -258,7 +258,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="departementId[]" id="Set_f">
+                <select class="span10 m-wrap" name="departementId" id="Set_f">
                 
                    <option value="">-请选择-</option>               
                 
@@ -277,7 +277,7 @@ Describe: userinfo
                      
         <div class="controls">
                      
-            <select class="span10 m-wrap" name="jobTitleId[]" id="fJob">
+            <select class="span10 m-wrap" name="jobTitleId" id="fJob">
                      
                 <option value="">-选择部门-</option>
                 
@@ -299,7 +299,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="departementId[]" id="Set_s">
+                <select class="span10 m-wrap" name="departementId" id="Set_s">
 
                     <option value="">-请选择-</option>               
                          
@@ -317,7 +317,7 @@ Describe: userinfo
                      
             <div class="controls">
                          
-                <select class="span10 m-wrap" name="jobTitleId[]" id="sJob">
+                <select class="span10 m-wrap" name="jobTitleId" id="sJob">
                          
                     <option value="">-选择部门-</option>
                          
@@ -333,7 +333,7 @@ Describe: userinfo
 <div class="row-fluid">
 
 
-<% if(serverdata.krPositionEmployeeRelations.length!=0) {
+<% if(serverdata.krPositionEmployeeRelations && serverdata.krPositionEmployeeRelations.length!=0) {
 
     var positions = '';
     for(var p = 0;p < serverdata.krPositionEmployeeRelations.length;p ++){
@@ -368,7 +368,7 @@ Describe: userinfo
 
         <div class="controls">
 
-            <input type="text" name="employeeSortNumber" class="span10 m-wrap">
+            <input type="text" name="employeeSortNumber" class="span10 m-wrap" value="<%=serverdata.employeeSortNumber%>">
 
         </div>
 
@@ -391,7 +391,7 @@ Describe: userinfo
  
             <div class="controls">
      
-                <input type="text" name="employeeMobilePhoneSecond" class="span10 m-wrap">
+                <input type="text" name="employeeMobilePhoneSecond" class="span10 m-wrap" value="<%=serverdata.employeeMobilePhoneSecond%>">
      
             </div>
  
@@ -405,7 +405,7 @@ Describe: userinfo
 
         <div class="controls">
  
-            <input type="text" name="employeeMobilePhoneThird" class="span10 m-wrap">
+            <input type="text" name="employeeMobilePhoneThird" class="span10 m-wrap" value="<%=serverdata.employeeMobilePhoneThird%>">
  
         </div>
      
@@ -423,7 +423,7 @@ Describe: userinfo
      
                 <div class="controls">
          
-                    <input type="text" name="employeeTelephone" class="span10 m-wrap">
+                    <input type="text" name="employeeTelephone" class="span10 m-wrap" value="<%=serverdata.employeeTelephone%>">
          
                 </div>
      
@@ -437,7 +437,7 @@ Describe: userinfo
      
                 <div class="controls">
          
-                    <input type="text" name="employeeTelephoneSecond" class="span10 m-wrap">
+                    <input type="text" name="employeeTelephoneSecond" class="span10 m-wrap" value="<%=serverdata.employeeTelephoneSecond%>">
          
                 </div>
      
@@ -455,7 +455,7 @@ Describe: userinfo
  
             <div class="controls">
      
-                <input type="text" name="employeeTelephoneThird" class="span5 m-wrap">
+                <input type="text" name="employeeTelephoneThird" class="span5 m-wrap" value="<%=serverdata.employeeTelephoneThird%>">
      
             </div>
      
@@ -478,14 +478,14 @@ Describe: userinfo
                                              
 </form>
 
-<% if(serverdata.krDepartmentEmployeeRelations.length!=0){
+<!--获取部门极其职称数据-->
+<% if(serverdata.krDepartmentEmployeeRelations && serverdata.krDepartmentEmployeeRelations.length!=0){
     var count = 0;
-for(var d = 0;d < serverdata.krDepartmentEmployeeRelations.length;d++)%>
-    count++;
-    <input type="hidden" value="<%=serverdata.krDepartmentEmployeeRelations[d].krDepartment.departmentId%>" id="<%=dept+count+'Id'%>">
-
-    <input type="hidden" value="<%=serverdata.krDepartmentEmployeeRelations[d].krEmployeeJobTitle.jobTitleId%>" id="<%=job+count+'Id'%>">
-<%}%>
+for(var d = 0;d < serverdata.krDepartmentEmployeeRelations.length;d++){ count++;%>
+    
+    <input type="hidden" value='{"deptid":"<%=serverdata.krDepartmentEmployeeRelations[d].krDepartment.departmentId%>","jobid":"<%=serverdata.krDepartmentEmployeeRelations[d].krDepartment.krEmployeeJobTitles[0].jobTitleId%>"}' id="deptJob<%=d%>">
+    
+<%}}%>
 
 
 <script type="text/javascript">
@@ -503,10 +503,17 @@ $(document).ready(function() {
     $("#emlistBtn").on('click',function(){
 
         $("#employeeInfo").removeClass('active');
-
         $("#employeeList").addClass('active');
 
     })
+
+    //获取编辑的数据
+    var deptJobOneJson = $.parseJSON($('#deptJob0').val()),
+        deptJobTwoJson = $.parseJSON($('#deptJob1').val());
+    if(!deptJobOneJson || !deptJobTwoJson) {
+        deptJobOneJson = {};
+        deptJobTwoJson = {};
+    }
 
     //加载第一部门
     urljasonfix.Set_f =
@@ -514,27 +521,69 @@ $(document).ready(function() {
         {"ra":"Set_f",
         "dir":"Set/BI/deptopt",
         "dif":'department/listAllDepartments',
-        "p":{"deptId":""},
+        "p2":{"deptId":deptJobOneJson.deptid,"jobTitleId":deptJobOneJson.jobid},
         "m":2
 
         }
     ];
-
     yixunload(urljasonfix.Set_f,urlfix);
+
     //加载第二部门
     urljasonfix.Set_s =
     [
         {"ra":"Set_s",
         "dir":"Set/BI/deptopt",
         "dif":'department/listAllDepartments',
-        "p":{"deptId":""},
+        "p2":{"deptId":deptJobTwoJson.deptid,"jobTitleId":deptJobTwoJson.jobid},
         "m":2
         }
     ];
     yixunload(urljasonfix.Set_s,urlfix);
 
-    //选择部门加载该部门下职称信息
+    //默认选中（编辑时）
+    var defaultOneDeptId = urljasonfix.Set_f[0].p2.deptId,
+        defaultTwoDeptId = urljasonfix.Set_s[0].p2.deptId;
+
+    if(defaultOneDeptId){
+
+        $("#Set_f").val(defaultOneDeptId);
+
+        var defaultOneJobId = urljasonfix.Set_f[0].p2.jobTitleId;
+        //默认加载第一部门职称（编辑）
+        urljasonfix.fJob =
+        [{
+            "ra":"fJob",
+            "dir":"Set/BI/jobopt",
+            "dif":'department/listDepartmentJobTitles',
+            "p":{"deptId":defaultOneDeptId}
+        }];
+        yixunload(urljasonfix.fJob,urlfix);
+
+        $("#fJob").val(defaultOneJobId);
+
+    } 
+
+    if(defaultTwoDeptId){
+
+        $("#Set_s").val(defaultTwoDeptId);
+
+        var defaultTwoJobId = urljasonfix.Set_s[0].p2.jobTitleId;
+       
+        urljasonfix.sJob =
+        [{
+            "ra":"sJob",
+            "dir":"Set/BI/jobopt",
+            "dif":'department/listDepartmentJobTitles',
+            "p":{"deptId":defaultTwoDeptId}
+        }];
+        yixunload(urljasonfix.sJob,urlfix);
+
+        $("#sJob").val(defaultTwoJobId);
+    }
+
     
+
+    //选择部门加载该部门下职称信息
     $("#Set_f").change(function(){
         var fdeptId = $(this).val();
         urljasonfix.fJob =
@@ -651,7 +700,7 @@ $(document).ready(function() {
 
             $('#emInfoForm').submit(function() {              
                 var data = $(this).serialize(); //序列化表单数据
-                console.log(data);
+                //console.log(data);
                 $.getJSON(
                     "http://10.188.192.200:8080/YIXUN_1.5_EE/department/addEmployee?jsoncallback=?", data,
                     function(json) {
@@ -669,9 +718,9 @@ $(document).ready(function() {
         if($("#emInfoForm").valid()){
 
             $('#emInfoForm').submit(function() {
-
                 var data = $(this).serialize(); //序列化表单数据 
-                return false;
+                //console.log(data);
+                //return false;
                 $.getJSON(
                     "http://10.188.192.200:8080/YIXUN_1.5_EE/department/updateEmployee?jsoncallback=?", data,
                     function(json) {

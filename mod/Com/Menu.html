@@ -36,51 +36,54 @@
 	</li>
 <% }} %>
 <script type="text/javascript">
+
 	//点击首页左侧二级菜单
     $('.page-sidebar').on('click', ' li > a.open_tabs', function (e) {
-             //@@后面还需要做点击高亮，同时更改urlJSON数据
-            e.preventDefault();
-            App.scrollTop();
-            
-            var label = $(this).html();
-            var link_id = $(this).attr('id');                
-            
-            var menuContainer = jQuery('.page-sidebar ul');
-            
+        
+        e.preventDefault();
+        App.scrollTop();
+        
+        var label = $(this).html();
+        var link_id = $(this).attr('id');                
+        
+        var menuContainer = jQuery('.page-sidebar ul');
+        
 
-            var tabContent = $("#dashboard");
-            menuContainer.children('li.active').removeClass('active');
-            menuContainer.children('arrow.open').removeClass('open');
+        var tabContent = $("#dashboard");
+        menuContainer.children('li.active').removeClass('active');
+        menuContainer.children('arrow.open').removeClass('open');
 
-            $(this).parents('li').each(function () {
-                $(this).addClass('active');
-                $(this).children('a > span.arrow').addClass('open');
-            });
-            $(this).parents('li').addClass('active');
+        $(this).parents('li').each(function () {
+            $(this).addClass('active');
+            $(this).children('a > span.arrow').addClass('open');
+        });
+        $(this).parents('li').addClass('active');
 
-            //App.ajaxblockUI($("#sub_m"),false,'success');
-            //return;
-            //var urlfixObj = urlJSON;
-            
-            urlJSON.Db_m[0].p2.fid = link_id;       
-            flushurl();
-            //return;
-            //载入当前模块的submenu
-            var submenu = [{
-            	"ra":"sub_m",
-				"dir":"Com/Submenu",
-				"dif":'resource/listSubResourcesByType',
-				"p":{"resourceId":link_id,"resourceTypeId":2},
-				"p2":{"subid":""}
-			}];
+        //App.ajaxblockUI($("#sub_m"),false,'success');
+        //return;
+        //var urlfixObj = urlJSON;
+        
+        urlJSON.Db_m[0].p2.fid = link_id;
+        flushurl();
+        //return;
+        //载入当前模块的submenu
+        var submenu = [{
+        	"ra":"sub_m",
+			"dir":"Com/Submenu",
+			"dif":'resource/listSubResourcesByType',
+			"p":{"resourceId":link_id,"resourceTypeId":2},
+			"p2":{"subid":""}
+		}];
 
-            yixunload(submenu,"urlJSON");
+        yixunload(submenu,"urlJSON");
 
-            return false;
+        
+
+        return false;
     });
 	
 
-	//加载默认子菜单
+	//加载默认的工作台子菜单
     if(!urlJSON.sub_m) {
     	urlJSON.sub_m =
 		[{
@@ -90,10 +93,11 @@
 			"p":{"resourceId":"1","resourceTypeId":2},
 			"p2":{"subid":"28"}
 		}];
-    } 
-
+    }
     yixunload(urlJSON.sub_m,"urlJSON");
+   
 
+    //设置主菜单样式
     var menuflag = urlJSON.Db_m[0].p2.fid; //获取主菜单ID
     if(!menuflag){
         $("#index_s").addClass("selected").parent().parent("li").addClass("active");

@@ -72,25 +72,30 @@ for (var i = 0, l = serverdata.length; i < l; i++) { %>
             return false;
         });
         
-
-        //if(!urlJSON.dashboard) {
         var paras = $("#sub_m li a").first().attr('para');
         var parasJson = $.parseJSON(paras);
-        urlJSON.dashboard =
-        [{
-        "ra":"dashboard",
-        "dir":parasJson.dir+parasJson.code,
-        "dif":''
-        }];
-        urlJSON.sub_m[0].p.resourceId = parasJson.id;
-        flushurl();
-        //}
+        //console.log('nice');
+        //console.log(paras);
+        if(!urlJSON.dashboard) {
+            //默认装载index的dashbord            
+            urlJSON.dashboard =
+            [{
+                "ra":"dashboard",
+                "dir":parasJson.dir+parasJson.code,
+                "dif":''
+            }];
+        } else {
+            urlJSON.dashboard[0].dir = parasJson.dir+parasJson.code;
+            flushurl();
+        }
         yixunload(urlJSON.dashboard,"urlJSON");
 
+        /**/
+
         //子菜单响应URL样式
-        var subMenuflag = urlJSON.sub_m[0].p2.subid; //获取子菜单name
+        var subMenuflag = urlJSON.sub_m[0].p2.subid; //获取子菜单
         //console.log('ZZZZZZ'+subMenuflag);
-        if(!subMenuflag){
+        if(!subMenuflag) {
             $("#sub_m li").first().addClass("active");
             $("#sub_m li a").children("span").addClass("selected");
         } else {
@@ -98,13 +103,15 @@ for (var i = 0, l = serverdata.length; i < l; i++) { %>
             $("#sub_m li a[id="+subMenuflag+"]").children("span").addClass("selected");
         }
 
-        /*urlJSON.sub_h =[{
+        /*
+        urlJSON.sub_h =[{
             "ra":"sub_h",
             "dir":"Com/subhead",
             "dif":'',
             "p":{"modulename":urlJSON.sub_m[0].p.modulename,"subname":urlJSON.sub_m[0].p.subname}
         }];
         
-        yixunload(urlJSON.sub_h,"urlJSON");*/
+        yixunload(urlJSON.sub_h,"urlJSON");
+        */
 
 </script>
