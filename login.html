@@ -282,10 +282,12 @@
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+	
+	<script src="media/config.js" type="text/javascript"></script>
 
 	<script src="media/js/app.js" type="text/javascript"></script>
 
-	<script src="media/js/login.js" type="text/javascript"></script>      
+	<script src="media/js/login.js" type="text/javascript"></script>    
 
 	<!-- END PAGE LEVEL SCRIPTS --> 
 
@@ -301,11 +303,10 @@
 		    if($(".login-form").valid()){
 		     	$('.login-form').submit(function() {
 			        var data = $(this).serialize(); //序列化表单数据 
-			        //alert('jinlai');
 			        $.getJSON(
-			            "http://10.188.192.200:8080/YIXUN_1.5_EE/login/doLogin?jsoncallback=?",data,
+			            processingUrl + "login/doLogin?jsoncallback=?",data,
 			            function(json) {
-			            	//console.log(json);
+			            	console.log(json);
 			            	if(json.resultCode){
 				            	if(json.resultCode == 102){
 				            		App.ajaxblockUI(102,json.resultReason,setTimeout($.unblockUI, 2000));

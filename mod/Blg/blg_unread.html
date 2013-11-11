@@ -1,0 +1,337 @@
+<!--
+Author  : zhangjia
+Date    : 20130913
+Describe: 待阅列表页.
+-->
+<!-- BEGIN PAGE CONTENT-->  
+<div class="row-fluid">
+
+    <div class="span12">
+                           
+        <div  class="portlet box red">
+
+            <div class="portlet-title">
+
+                <div class="caption"><i class="icon-user"></i>待阅列表</div>
+            
+            </div>
+        <!-- BEGIN USER LIST-->
+            <div class="portlet-body">
+                
+                <div class="tabbable tabbable-custom">
+
+                    <ul class="nav nav-tabs">
+                            
+                        <li class=""><a data-toggle="tab" href="#portlet_tab2_4">其他</a></li>
+
+                        <li class=""><a data-toggle="tab" href="#portlet_tab2_3">项目</a></li>
+
+                        <li class=""><a data-toggle="tab" href="#portlet_tab2_2">客户</a></li>
+
+                        <li class="active"><a data-toggle="tab" href="#portlet_tab2_1">银行</a></li>
+
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div id="portlet_tab2_1" class="tab-pane active">
+
+                            <h4>银行待阅列表</h4>
+
+                            <!-- <div class="row-fluid">
+                            
+                                <div class="span8 booking-search">
+                            
+                                        <form action="#" class="well">
+                                            
+                                            <div class="control-group">
+                            
+                                                <label class="control-label">条件检索:</label>
+                            
+                                                <div class="controls">
+                            
+                                                    <div data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-append date date-picker">
+                            
+                                                        <input type="text" value="12-02-2012" size="16" class="m-wrap m-ctrl-medium date-picker"><span class="add-on"><i class="icon-calendar"></i></span>
+                            
+                                                    </div>
+                                                    
+                                                    <div data-date-minviewmode="months" data-date-viewmode="years" data-date-format="mm/yyyy" data-date="102/2012" class="input-append date date-picker">
+                            
+                                                        <input type="text" value="02/2012" size="16" class="m-wrap m-ctrl-medium date-picker"><span class="add-on"><i class="icon-calendar"></i></span>
+                                                    
+                                                    </div>
+                            
+                                                    <div class="input-append"><button class="btn blue">GO <i class="m-icon-swapright m-icon-white"></i></button>
+                                                    </div>
+                            
+                                                    
+                                                </div>
+                            
+                                            </div>
+                                        </form>
+                                    </div>
+                            </div> -->
+
+                            <table class="table table-striped table-bordered table-hover" id="sample_1">
+
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
+
+                                            <th><i class="icon-adn"></i> 关联银行</th>
+                                                
+                                            <th><i class="icon-user"></i> 发表人</th>
+
+                                            <th><i class="icon-info-sign"></i> 简述</th>
+
+                                            <th><i class="icon-time"></i> 发表时间</th>
+
+                                            <th><i class="icon-refresh"></i> 操作</th>
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td><a href="" title="点击去到该银行的过程管理">中行车公庙支行<sup>hover info</sup></a></td>
+
+                                            <td><span title="鼠标放上来显示该人的详细信息" style="cursor:pointer">谌夫琦<sup>hover info</sup></span></td>
+
+                                            <td><a href="">发表过程管理："拜访,接待对象：吴总、宣兆威拜访,接待目..."</a></td>
+
+                                            <td class="center">2分钟前</td>
+
+                                            <td ><a href="" class="btn mini blue"><i class="icon-exclamation-sign"></i> 详情</a> <a href="" class="btn mini green"><i class="icon-ok"></i> 已阅</a></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td>光大银行车公庙支行</td>
+
+                                            <td>陈家奎</td>
+
+                                            <td><a href="">发表过程管理："发货计划..."</a></td>
+
+                                            <td class="center">大约3小时前</td>
+
+                                            <td ><a href="" class="label label-warning">查看详情</a></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td>南粤银行</td>
+
+                                            <td>董静文</td>
+
+                                            <td><a href="">发表过程管理："开票100万..."</a></td>
+
+                                            <td class="center">18小时前</td>
+
+                                            <td ><span class="label label-success">预留区域</span></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td>user1wow</td>
+
+                                            <td>黄芷妍</td>
+
+                                            <td><a href="">20</a></td>
+
+                                            <td class="center">18小时前</td>
+
+                                            <td ><span class="label label-inverse">预留区域</span></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td>restest</td>
+
+                                            <td>许可证</td>
+
+                                            <td><a href="">20</a></td>
+
+                                            <td class="center">18小时前</td>
+
+                                            <td ><span class="label label-success">预留区域</span></td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td><input type="checkbox" class="checkboxes" value="1" /></td>
+
+                                            <td>foopl</td>
+
+                                            <td><a href="mailto:userwow@gmail.com">good@gmail.com</a></td>
+
+                                            <td>20</td>
+
+                                            <td class="center">19.11.2010</td>
+
+                                            <td ><span class="label label-success">预留区域</span></td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <!-- END USERLIST  -->       
+
+        </div>                
+                                
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        
+        var urlfix = "<%=urlfix%>";
+        console.log(urlfix);
+
+        var urljasonfix = eval(urlfix);
+
+        handleUniform();
+        //datatable例子
+        $('#sample_1').dataTable({
+                "aLengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                // set the initial value
+                "iDisplayLength": 5,
+                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",
+                "aoColumnDefs": [{
+                        'bSortable': false,
+                        'aTargets': [0]
+                    }
+                ]
+            });
+
+        //以下为后期修改代码
+
+        //部门列表
+        if(!urljasonfix.deptlist){
+
+            urljasonfix.deptlist =
+            [{
+                "ra":"deptlist",
+                "dir":"Com/deptlist",
+                "dif":'department/listAllDepartments',
+                "p":{"deptId":'4'}
+                }
+            ];            
+        }
+        //yixunload(urljasonfix.deptlist,urlfix);
+        
+        //用户列表
+        if(!urljasonfix.employeeList){
+            urljasonfix.employeeList =
+            [{
+                "ra":"employeeList",
+                "dir":"Set/BI/epmloyeelist",
+                "dif":"department/getEmployeePage",
+                "p":"deptId=4",
+                "columns":
+                [
+                    { "mData": "employeeId" },
+                    { 
+                        "mData": "employeeName",
+                        "mRender": function(data,type,full) {
+                            return '<a class="emplyeeInfoLink" href="javascript:;" id="'+full.employeeId+'">'+data+'</a>';
+                        }
+                     },
+                    { "mData": "employeeEmail" },
+                    { "mData": "employeeMobilePhoneMaster" },
+
+                ]
+            }];
+        }
+        //datableload(urljasonfix.employeeList,urlfix);        
+        
+        //点部门刷部门用户列表
+        $("#deptlist li a").on('click',function() {
+            var tp = $(this).parent('li');
+            tp.addClass('active').siblings().removeClass('active');
+
+            $("#employeeInfo").removeClass('active');
+            $("#employeeList").addClass('active');
+
+            var cudeptid = $(this).attr('id');    
+            urljasonfix.employeeList =
+            [
+                {"ra":"employeeList",
+                "dir":"Set/BI/epmloyeelist",
+                "dif":'department/getEmployeePage',
+                "p":"deptId="+cudeptid,
+                "columns":
+                [
+                    { "mData": "employeeId" },
+                    { "mData": "employeeName",
+                    "mRender": function(data,type,full) {
+                            return '<a class="emplyeeInfoLink" href="javascript:;" id="'+full.employeeId+'">'+data+'</a>';
+                        }
+                     },
+                    { "mData": "employeeEmail" },
+                    { "mData": "employeeMobilePhoneMaster" },
+                    
+                ]
+                }
+            ];      
+            //datableload(urljasonfix.employeeList,urlfix);      
+        })
+
+        //新增用户表单
+        $("#addEmBtn").on('click',function(){
+            $("#employeeInfo").addClass('active');
+            $("#employeeList").removeClass('active');
+
+             urljasonfix.employeeInfo =
+            [
+                {"ra":"employeeInfo",
+                "dir":"Set/BI/employeeinfo",
+                "dif":'',
+                "p":{"employeeId":""}
+                }
+            ];
+            //yixunload(urljasonfix.employeeInfo,urlfix);
+        })
+
+    });
+
+</script>
+
+<!-- END JAVASCRIPTS -->   

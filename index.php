@@ -527,6 +527,7 @@
 	    yixunload(urljasonfix.Db_m,urlfix);
 	    
 	    //加载个人头部信息
+	    
 	    /*if(!urljasonfix.Db_h){
 			urljasonfix.Db_h = [{
 	    	ra:'Db_h',

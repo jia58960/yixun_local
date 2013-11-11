@@ -23,6 +23,8 @@ function flushurl(){
 	window.history.pushState(null,null,"?"+urlStr);
 }
 
+
+var processingUrl = 'http://10.188.199.4:8080/YIXUN_1.5_EE/';
 /*function getParentUrlJson(){ //urlfix
 	 var demo1 = urlfix.lastIndexOf('.');
     var newurl = urlfix.slice(0,demo1);

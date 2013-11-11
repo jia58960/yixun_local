@@ -1,0 +1,143 @@
+	<div class="row-fluid">
+
+		<div class="span12">
+			
+			<div class="portlet box blue">
+
+				<div class="portlet-title">
+
+					<div class="caption"><i class="icon-reorder"></i>添加/删除权限</div>
+
+				</div>
+
+				<div class="portlet-body form">
+
+					<form action="" class="form-horizontal" id="rolePageForm">
+						
+						<div class="control-group">
+
+							<label class="control-label">角色</label>
+							
+							<div class="controls" id="roleList">
+
+								
+
+									<label class="checkbox">
+
+										<input type="checkbox" value="">全选
+
+									</label>
+							
+							</div>
+							
+						</div>
+						
+						<div class="control-group">
+
+							<label class="control-label">权限</label>
+
+							<div class="controls" id="perList">
+								
+								<!--权限放置区-->
+								
+							</div>
+
+						</div>
+						
+						<div class="form-actions">
+
+							<button class="btn blue" id="perAddBtn">添加权限</button>
+
+							<button class="btn red" id="perRemoveBtn">解除权限</button>                            
+
+						</div>	
+					
+					</form>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+	
+	
+ 
+	<script type="text/javascript">  
+		jQuery(document).ready(function() {       
+			var urlfix = "<%=urlfix%>";
+	        handleUniform();
+	        var urljasonfix = eval(urlfix);
+	        //角色列表
+            urljasonfix.roleList =
+            [{
+                "ra":"roleList",
+                "dir":"Com/rolelist",
+                "dif":'permission/listAllRoles',
+                "m":2
+                }
+            ];            
+	        
+	        yixunload(urljasonfix.roleList,urlfix);
+	        
+	        //权限列表
+            urljasonfix.perList =
+            [{
+                "ra":"perList",
+                "dir":"Set/BI/perlist",
+                "dif":'resource/listMenus',
+                "p":{"resourceTypeId":"1"},
+                "m":2
+            }]; 
+                       
+	        yixunload(urljasonfix.perList,urlfix);
+
+	        //绑定
+	        $("#perAddBtn").click(function(){
+	        	alert('123');
+		     	$('#rolePageForm').submit(function() {
+			        var data = $(this).serialize(); //序列化表单数据 
+			        console.log(data);
+			        //return false;
+			        $.getJSON(
+			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/addPermissionsToRoles?jsoncallback=?",data,
+			            function(json) {
+			            	console.log(json);
+			            	//return false;
+			            	if(json.resultCode){
+				            	App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+			            	}
+			            }
+			        ); 
+			        return false; 
+			    }); 
+		 	
+			});        
+
+	        //解除
+	        $("#perRemoveBtn").click(function(){
+		     	$('#rolePageForm').submit(function() {
+			        var data = $(this).serialize(); //序列化表单数据 
+			        console.log(data);
+			        //return false;
+			        $.getJSON(
+			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/deletePermissionsFromRoles?jsoncallback=?",data,
+			            function(json) {
+			            	console.log(json);
+			            	if(json.resultCode){
+				            	App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+			            	}
+			            }
+			        ); 
+			        return false; 
+			    }); 
+		 	
+			});
+	        
+
+
+		 
+		});
+
+	</script>

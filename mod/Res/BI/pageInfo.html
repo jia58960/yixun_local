@@ -45,7 +45,7 @@
     </div> 
             
     
-     <div class="control-group" id="filename_edit" style="display:none;">
+     <div class="control-group" id="filename_edit">
      
         <label class="control-label">页面文件名<span class="required">*</span></label>
      
@@ -94,7 +94,7 @@
             console.log(data);
             //return false;
             $.getJSON(
-                "http://10.188.192.200:8080/YIXUN_1.5_EE/resource/updateResource?jsoncallback=?",data,
+                processingUrl+"resource/updateResource?jsoncallback=?",data,
                 function(json) {
                     console.log(json);
                     if(json.resultCode){

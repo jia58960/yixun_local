@@ -1,0 +1,100 @@
+<div class="container-fluid">
+
+    <!-- BEGIN PAGE HEADER-->
+
+    <div class="row-fluid">
+
+        <div class="span12">
+
+        </div>
+
+    </div>
+
+    <!-- END PAGE HEADER-->
+
+    <!-- BEGIN PAGE CONTENT-->
+	
+	<div class="row-fluid">
+
+		<div class="span12">
+    
+			<!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+			<div class="portlet box red">
+
+				<div class="portlet-title">
+
+					<div class="caption"><i class="icon-user"></i>角色管理</div>
+
+					<div class="actions">
+
+						<a href="javascript:;" id="role_new" class="btn blue user_new"><i class="icon-plus"></i> 新建角色</a>
+
+					</div>
+
+				</div>
+
+				<div class="portlet-body" id="roleTb">
+					
+
+
+				</div>
+
+			</div>
+
+			<!-- END EXAMPLE TABLE PORTLET-->
+
+		</div>
+
+	</div>
+	
+	<!-- END PAGE CONTENT -->
+	
+</div>
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+ 
+	<script src="media/js/table-editable.js"></script>    
+	
+	<!-- END PAGE LEVEL SCRIPTS -->
+	<script>
+
+	jQuery(document).ready(function() {    
+
+		var urlfix = "<%=urlfix%>";
+        console.log(urlfix);
+
+        var urljasonfix = eval(urlfix);
+
+		urljasonfix.roleTb =
+        [{
+            "ra":"roleTb",
+            "dir":"Per/BI/roleList",
+            "dif":'permission/getRolePage',
+            "p":"",
+            "columns":
+            [
+                { "mData": "roleId" },
+                {
+                    "mData": "roleName",
+                    "mRender": function(data,type,full) {
+                        return '<a href="javascript:;" title="点击编辑" id="'+full.roleId+'">'+data+'</a>';
+                    }
+                },
+                {
+                	"mData":"roleId",
+                	"mRender": function(data,type,full) {
+                        return '<a class="btn mini black edit" href="javascript:;" id="'+full.roleId+'"><i class="icon-edit"></i> 编辑</a> <a class="btn mini blue setPer" href="javascript:;" id="'+full.roleId+'"><i class="icon-cog"></i> 设置</a> <a class="btn mini red delete" href="javascript:;" id="'+full.roleId+'"><i class="icon-remove"></i> 删除</a>';
+                    }
+                }
+            ]
+        }];      
+        console.log(urljasonfix);
+        datableload(urljasonfix.roleTb,urlfix);
+        
+	});
+
+		
+	</script>
+
+	<!-- END JAVASCRIPTS -->   

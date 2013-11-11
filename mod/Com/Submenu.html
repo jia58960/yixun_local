@@ -1,8 +1,8 @@
 <% 
 for (var i = 0, l = serverdata.length; i < l; i++) { %>
 	<li>
-        <a href="javascript:;" id="<%=serverdata[i].yxResourceBySublevelResourceId.resourceId%>" para='{"id":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceId%>","dir":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceDescribe%>","code":"<%=serverdata[i].yxResourceBySublevelResourceId.resourceCode%>"}'>
-        <%=serverdata[i].yxResourceBySublevelResourceId.resourceName%>
+        <a href="javascript:;" id="<%=serverdata[i].resourceId%>" para='{"id":"<%=serverdata[i].resourceId%>","dir":"<%=serverdata[i].resourceDescribe%>","code":"<%=serverdata[i].resourceCode%>"}'>
+        <%=serverdata[i].resourceName%>
         	<span class=""></span>
         </a>
 
@@ -88,6 +88,7 @@ for (var i = 0, l = serverdata.length; i < l; i++) { %>
             urlJSON.dashboard[0].dir = parasJson.dir+parasJson.code;
             flushurl();
         }
+        
         yixunload(urlJSON.dashboard,"urlJSON");
 
         /**/

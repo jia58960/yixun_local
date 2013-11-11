@@ -1,0 +1,51 @@
+<table class="table table-striped table-hover table-bordered dataTable" id="roleTb_dt">
+
+	<thead>
+
+		<tr>
+
+			<th>序号</th>
+
+			<th>角色名</th>
+			
+			<th>操作</th>
+
+		</tr>
+
+	</thead>
+
+	<tbody>
+	</tbody>
+
+</table>
+<script type="text/javascript">
+$(function(){
+
+	var urlfix = "<%=urlfix%>";
+	var urljasonfix = eval(urlfix);
+
+	//编辑角色
+ 	$("#roleTb_dt a.edit").live("click",function(){
+ 		alert('nice');
+        var rId = $(this).attr('id');
+              
+       
+    });
+
+ 	//删除角色
+    $("#roleTb_dt a.delete").live("click",function(){
+
+        var rId = $(this).attr('id');
+        $.getJSON(
+            processingUrl+"permission/delRole?jsoncallback=?","roleId="+rId,
+            function(json) {
+                console.log(json);
+            }
+        ); 
+        $(this).parents('tr')[0].remove();
+        
+    });
+
+
+});
+</script>

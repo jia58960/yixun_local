@@ -46,6 +46,10 @@
 
 					                <input type="text" id="setting_qtip_username" name="resourceName" class="span4 m-wrap" value="" />
 
+					                <p class="help-block">
+					                	"<span style="color:red">菜单名称</span>"即一级菜单名,如"资源配置";"<span style="color:red">目录名称</span>"即二级菜单名称,如"资源注册";"<span style="color:red">页面名称</span>"即最后一级页面名，如本页即"资源注册页"
+					                </p>
+
 					            </div>
 					 
 					        </div>
@@ -268,12 +272,12 @@
 	    $("#resregBtn").click(function(){
 	        if($("#resReg-Form").valid()){
 	            $('#resReg-Form').submit(function() {
-	                alert('ok');
+	                //alert('ok');
 	                var data = $(this).serialize(); //序列化表单数据 
 	                console.log(data);
 	                //return false;
 	                $.getJSON(
-	                    "http://10.188.192.200:8080/YIXUN_1.5_EE/resource/addResource?jsoncallback=?",data,
+	                    processingUrl+"resource/addResource?jsoncallback=?",data,
 	                    function(json) {
 	                        console.log(json);
 	                        if(json.resultCode){
