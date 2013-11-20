@@ -91,6 +91,7 @@ var App = function () {
         handleChoosenSelect();
         handleFixedSidebar();
         runResponsiveHandlers();
+        //handleDesktopScroll();
     }
 
     var handleResponsiveOnInit = function () {
@@ -121,7 +122,7 @@ var App = function () {
                     clearTimeout(resize);
                 }   
                 resize = setTimeout(function() {
-                    //console.log('resize');
+                    console.log('resize');
                     handleResponsive();    
                 }, 50); // wait 50ms until window resize finishes.
             });
@@ -136,21 +137,24 @@ var App = function () {
         var sidebar = $('.page-sidebar');
         var body = $('body');
         var height;
-
+        
         if (body.hasClass("page-footer-fixed") === true && body.hasClass("page-sidebar-fixed") === false) {
             var available_height = $(window).height() - $('.footer').height();
             if (content.height() <  available_height) {
                 content.attr('style', 'min-height:' + available_height + 'px !important');
             }
         } else {
+
             if (body.hasClass('page-sidebar-fixed')) {
-                height = _calculateFixedSidebarViewportHeight();
+                height = $(window).height()-$('.header').height() - $('.footer').height()-13; //edit by zhangjia 20131119
             } else {
+                
                 height = sidebar.height() + 20;
             }
-            if (height >= content.height()) {
+
+            /*if (height >= content.height()) {*/
                 content.attr('style', 'min-height:' + height + 'px !important');
-            } 
+            /*} */
         }          
     }
 
@@ -222,14 +226,25 @@ var App = function () {
     }
 
     var handleFixedSidebar = function () {
-        var menu = $('.page-sidebar-menu');
+        var menu = $('.page-sidebar-menu'),
+            content_scroll = $('.content-scroller'),
+            sidebarHeight = _calculateFixedSidebarViewportHeight();;
+
 
         if (menu.parent('.slimScrollDiv').size() === 1) { // destroy existing instance before updating the height
             menu.slimScroll({
                 destroy: true
             });
             menu.removeAttr('style');
-            $('.page-sidebar').removeAttr('style');            
+            $('.page-sidebar').removeAttr('style');   
+
+        }
+
+        if( content_scroll.parent('.slimScrollDiv').size() === 1) {
+           content_scroll.slimScroll({
+                destroy: true
+            });
+            content_scroll.removeAttr('style'); 
         }
 
         if ($('.page-sidebar-fixed').size() === 0) {
@@ -238,8 +253,6 @@ var App = function () {
         }
 
         if ($(window).width() >= 980) {
-            var sidebarHeight = _calculateFixedSidebarViewportHeight();
-
             menu.slimScroll({
                 size: '7px',
                 color: '#a1b2bd',
@@ -249,8 +262,19 @@ var App = function () {
                 allowPageScroll: false,
                 disableFadeOut: false
             });
-            handleSidebarAndContentHeight();
+            //handleSidebarAndContentHeight();
         }
+
+        content_scroll.slimScroll({
+            height: sidebarHeight - 13,
+            size: '8px',
+            railVisible: false,
+            alwaysVisible: true,
+            disableFadeOut: true
+        });
+
+        handleSidebarAndContentHeight();
+        
     }
 
     var handleFixedSidebarHoverable = function () {

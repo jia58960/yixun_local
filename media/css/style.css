@@ -48,7 +48,7 @@ body {
 General typography 
 ***/
 h3 small, h4 small, h5 small {
-  color: #444;
+  color: #888;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2963,7 +2963,7 @@ Custom portlet tabs
 Dashboard container
 ***/
 #dashboard {
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 /***
@@ -4920,17 +4920,30 @@ Top News Blocks(new in v1.2.2)
   position: absolute;
   filter: alpha(opacity=30); /*For IE8*/  
 }
-
+.top-news a .top-news-img {
+  right: 8px;
+  bottom: 15px; 
+  position: absolute;
+  -webkit-border-radius: 50% !important;
+     -moz-border-radius: 50% !important;
+          border-radius: 50% !important;
+}
 .top-news em {
   margin-bottom: 0;
   font-style: normal;
+  color:#ffffff;
 }
 
 .top-news span {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
 }
 
+.top-news .group-del {
+  position:relative;
+  left:95%;
+  top:-73px;
+}
 /***
 Bootstrap Carousel(new in v1.2.2)
 ***/
@@ -5343,3 +5356,26 @@ zhangjia customize
 	left:50px;
 	top:16px;
 }
+
+.bs-docs .ct {
+	background-color: #F5F5F5;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px 0;
+	color: #9DA0A4;
+	content: "金光项目";
+	font-size: 14px;
+	left: -1px;
+	padding: 3px 7px;
+	position: absolute;
+	background-color: #FAF6EA;
+	top: -1px;
+}
+.bs-docs {
+	background-color: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	margin: 15px 0;
+	padding: 25px 15px 10px;
+	position: relative;
+}
+

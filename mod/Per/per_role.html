@@ -34,10 +34,21 @@
 
 				</div>
 
-				<div class="portlet-body" id="roleTb">
+				<div class="portlet-body">
+
+					<div class="row-fluid">
+
+						<!--角色列表页面-->
+						<div class="span12" id="roleTb">
+							
+						</div>
+
+						<!--权限设置页面-->
+						<div class="span12" id="perSet">
+							
+						</div>
+					</div>
 					
-
-
 				</div>
 
 			</div>
@@ -66,6 +77,7 @@
 
         var urljasonfix = eval(urlfix);
 
+        //获取角色列表
 		urljasonfix.roleTb =
         [{
             "ra":"roleTb",
@@ -78,7 +90,7 @@
                 {
                     "mData": "roleName",
                     "mRender": function(data,type,full) {
-                        return '<a href="javascript:;" title="点击编辑" id="'+full.roleId+'">'+data+'</a>';
+                        return '<a href="javascript:;" class="simptip-info simptip-movable simptip-position-top setPer" data-tooltip="点击配置权限" id="'+full.roleId+'">'+data+'</a>';
                     }
                 },
                 {
@@ -89,8 +101,9 @@
                 }
             ]
         }];      
-        console.log(urljasonfix);
         datableload(urljasonfix.roleTb,urlfix);
+
+
         
 	});
 

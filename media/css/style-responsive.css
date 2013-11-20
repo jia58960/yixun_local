@@ -70,12 +70,12 @@
   	.page-content { 
   		margin-left: 225px; 
 		margin-top: 0px;
-		min-height: 760px; 
+		/* min-height: 760px; */ 
 	}
 
-	.page-sidebar-fixed .page-content {
+	 .page-sidebar-fixed .page-content {
 		min-height: 600px; 
-	}
+	} 
 
 	.page-content.no-min-height {
 		min-height: auto;

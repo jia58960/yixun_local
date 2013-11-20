@@ -52,6 +52,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
 
+	<link rel="stylesheet" type="text/css" href="media/css/jquery.tagsinput.css" />
 
 	<link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
 
@@ -75,18 +76,39 @@
 	
 	<link href="media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 	
+	<link href="media/css/simptip.css" rel="stylesheet" type="text/css"/>
+	
 	<!--<link rel="stylesheet" type="text/css" href="media/css/bootstrap-tree.css" />-->
 
 	<!-- END PAGE LEVEL STYLES -->
 
 	<link  href="media/css/jquery-ui-1.10.1.custom.min.css" rel="stylesheet" type="text/css"/>
 
-	<link  href="media/css/selectBox.css" rel="stylesheet" type="text/css"/> 
+	<!-- <link  href="media/css/selectBox.css" rel="stylesheet" type="text/css"/>  -->
+
+	<link  href="media/css/news.css" rel="stylesheet" type="text/css"/> 	
 
 	<!-- END PAGE LEVEL STYLES -->
 	
 	<!-- END PAGE LEVEL SCRIPTS -->
+	<link  href="media/css/jquery.qtip.min.css" rel="stylesheet" type="text/css"/>
+
+
+	<!-- END PAGE LEVEL STYLES -->
+
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
+	
+	<link href="media/css/blog.css" rel="stylesheet" type="text/css"/>
+	
+	<link href="media/css/chosen.css" rel="stylesheet" type="text/css"/>
+
+		<style type="text/css">
+
+		p[contenteditable]{
+			padding: 10px;
+		}
+
+	</style>
 
 </head>
 
@@ -107,7 +129,7 @@
 
 <!-- BEGIN BODY -->
 
-<body class="page-header-fixed">
+<body class="page-header-fixed page-sidebar-fixed page-footer-fixed">
 
 	<!-- BEGIN HEADER -->
 
@@ -227,7 +249,7 @@
 
 		<!-- BEGIN PAGE -->
 
-		<div class="page-content">
+		<div class="page-content" style="min-height:600px">
 
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -250,93 +272,82 @@
 			</div>
 
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="container-fluid">
-						<!-- BEGIN PAGE CONTAINER-->
-				<div class="page-content-body">
-						
-					<div class="container-fluid" id="main-content">
+			<div class="content-scroller">
+			<div class="page-content-body">
+					
+				<div class="container-fluid" id="main-content">
 
-					<!-- BEGIN PAGE HEADER-->
+				<!-- BEGIN PAGE HEADER-->
 
-						<div class="row-fluid">
+					<div class="row-fluid">
 
-							<div class="span12">
+						<div class="span12">
 
-								<!-- BEGIN STYLE CUSTOMIZER -->
+							<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
-								<div class="color-panel hidden-phone">
+							<div id="sub_h">
+								<!--以下内容只是为了美观而加的，后面来真正数据 zhangjia20131114-->
+								<h3 class="page-title">
 
-									<div class="color-mode-icons icon-color"></div>
+ 									大标题 <small>对dashboard内容的简要描述</small>
 
-									<div class="color-mode-icons icon-color-close"></div>
+								</h3>
 
-									<div class="color-mode">
+								<ul class="breadcrumb">
 
-										<p>THEME COLOR</p>
+									<li>
 
-										<ul class="inline">
+										<i class="icon-home"></i>
 
-											<li class="color-black current color-default" data-style="default"></li>
+										<a href="index.html">我的工作台</a> 
 
-											<li class="color-blue" data-style="blue"></li>
+										<i class="icon-angle-right"></i>
 
-											<li class="color-brown" data-style="brown"></li>
+									</li>
 
-											<li class="color-purple" data-style="purple"></li>
+									<li><a href="#">一级菜单</a>
+											<i class="icon-angle-right"></i>
+									</li>
 
-											<li class="color-grey" data-style="grey"></li>
-
-											<li class="color-white color-light" data-style="light"></li>
-
-										</ul>
+									<li><a href="#">二级菜单</a>
+											<i class="icon-angle-right"></i>
+									</li>
 
 
-									</div>
-
-								</div>
-
-								<!-- END BEGIN STYLE CUSTOMIZER -->    
-
-								<!-- BEGIN PAGE TITLE & BREADCRUMB-->
-
-								<div id="sub_h">
-									
-								</div>
-
-								<!-- END PAGE TITLE & BREADCRUMB-->
-
+								</ul>
 							</div>
+
+							<!-- END PAGE TITLE & BREADCRUMB-->
 
 						</div>
 
-						<!-- END PAGE HEADER-->
-
-						<div id="dashboard">
-							
-							<div class="row-fluid">
-
-								<div class="span6" id="Dashboard_feeds">
-
-									<!--feeds_module goes here-->
-
-								</div>
-								<div class="span6" id="Dashboard_chats">
-									<!--chats_module goes here-->
-										
-								</div>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-
-					<!--tab1 到此结束-->
 					</div>
 
-							
+					<!-- END PAGE HEADER-->
+					
+					<div id="dashboard">
 						
-						<!-- END PAGE CONTAINER-->    
-			    </div>
+						<div class="row-fluid">
+
+							<div class="span6" id="Dashboard_feeds">
+
+								<!--feeds_module goes here-->
+
+							</div>
+							<div class="span6" id="Dashboard_chats">
+								<!--chats_module goes here-->
+									
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+					</div>
+					
+				<!--tab1 到此结束-->
+				</div>
+					<!-- END PAGE CONTAINER-->    
+		    </div>
 			</div>
 
 		</div>
@@ -479,13 +490,17 @@
 	<script src="media/js/noty/themes/default.js" type="text/javascript"></script>
 
 	<script src="media/js/noty/layouts/center.js" type="text/javascript"></script>
-	
+
+	<!-- 标签输入 -->
+	<script type="text/javascript" src="media/js/jquery.tagsinput.min.js"></script>
+	<!-- 标签输入 -->
 
 	<script src="media/js/bootstrap-modal.js" type="text/javascript" ></script>
 	<script src="media/js/bootstrap-modalmanager.js" type="text/javascript" ></script>
 
-
+	<!-- 提示 -->
 	<script type="text/javascript" src="media/js/jquery.qtip.min.js"></script>
+	<!-- 提示 -->
 
 	<script type="text/javascript" src="media/common.js"></script>	
 
@@ -499,12 +514,19 @@
 
 	<script src="media/config.js"></script>
 
+	<!-- 表单元素初始化 -->
+	<script src="media/js/form-components.js"></script>     
+
+	
+	<!-- 表单元素初始化 -->
+	
 	<script type="text/javascript">
 		
 	jQuery(document).ready(function() {
 		
 	    App.init(); // initlayout and core plugins
 	    Index.init();
+	    FormComponents.init();
 		
 		var urlfix = "urlJSON";//index文件特有
 		var urljasonfix = eval(urlfix);
@@ -537,6 +559,94 @@
 	    	}];
 		}
 	    yixunload(urljasonfix.Db_h,urlfix);*/
+
+	 	/*$('.content-scroller').slimScroll({
+            color: '#a1b2bd',
+            opacity: .3,
+            height: sidebarHeight - 14,
+            railVisible: true,
+            alwaysVisible: true
+        });*/
+
+
+		$('.has_qtip').each(function() {
+
+			var id = $(this).attr('id');
+	        $(this).qtip({
+	            content: {
+	                text: 'Loading...',
+	                ajax: {
+	                	once: false,//该参数默认值为true，表示qTip只在第一次加载要显示的内容，而不是每一次显示都动态获取内容。
+	                    url: 'get_qtip_data.php',
+	                    type: 'POST', 
+				        data: { id: id,action:"get"}, 
+				        dataType: 'json', 
+				        success: function(data, status) {
+				         	if(status === "success"){
+				         		console.log(status);
+				         		console.log(data);
+				        	 	this.set('content.text', data.content);
+				         	}
+				         
+				         }
+	                }
+	            },
+	            position: {
+	            	 my: 'top center', 
+  					at: 'bottom center',
+		          //  target: 'mouse',
+		         //   adjust: { x: 5, y: 5 },
+		            viewport: $(window)
+		        },
+	            style: {
+					classes:'qtip qtip-default qtip-tipsy qtip-shadow qtip-rounded  qtip-pos-tc'// 'qtip qtip-default  qtip-pos-tl qtip-blue qtip-shadow qtip-rounded'
+					},
+					show: {
+		            effect: function() {
+		                $(this).show('slide', 500);
+		            }
+		        },
+	            hide: {
+						fixed: true,
+						delay: 300,
+						effect: function() {
+			                $(this).hide('puff', 500);
+			            }
+					},
+	         });
+	     });
+		   
+		$("body").on("mouseout","p[contenteditable='true']",function(){
+
+			var content = $(this).html();
+			var id= $(this).attr('id');
+
+			//有id，但无消息提示
+			if($(this).attr("class") === "no_qtip" ){
+
+				$.ajax({
+					type: "POST",
+					url: "get_qtip_data.php",
+					data: {id:id,content:content,action:"insert"},
+					dataType: "json",
+					success: function(data){
+					    
+					  }
+				});
+			}else{
+
+				$.ajax({
+					type: "POST",
+					url: "get_qtip_data.php",
+					data: {id:id,content:content,action:"update"},
+					dataType: "json",
+					success: function(data){
+					    
+					  }
+				});
+			}
+
+		});
         
 		
 	})

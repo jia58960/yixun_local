@@ -28,21 +28,50 @@ $(function(){
  	$("#roleTb_dt a.edit").live("click",function(){
  		alert('nice');
         var rId = $(this).attr('id');
-              
-       
     });
 
  	//删除角色
-    $("#roleTb_dt a.delete").live("click",function(){
-
+    $("#roleTb_dt a.delete").live("click",function() {
         var rId = $(this).attr('id');
+        alert(rId);
         $.getJSON(
             processingUrl+"permission/delRole?jsoncallback=?","roleId="+rId,
             function(json) {
                 console.log(json);
+                if(json.resultCode){
+                    if(json.resultCode == 200){
+                         App.ajaxblockUI(200,'删除成功!',setTimeout($.unblockUI, 2000));
+                    } else{
+                    App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
+                    }
+                } else {
+                    App.ajaxblockUI('error','系统错误',setTimeout($.unblockUI, 2000));
+                }
             }
         ); 
         $(this).parents('tr')[0].remove();
+        
+    });
+
+    //角色编辑权限
+    $("#roleTb_dt a.setPer").live("click",function() {
+
+        alert('2345');
+        $("#roleTb").hide('400');
+
+        $("#perSet").show('600');
+
+        var rId = $(this).attr('id');
+        urljasonfix.perSet =
+        [
+            {"ra":"perSet",
+            "dir":"Set/BI/roleSet",
+            "dif":'permission/getRoleInfoAndPermissionsByRole',
+            "p":{"roleId":rId}
+            }
+        ];
+        
+        yixunload(urljasonfix.perSet,urlfix);
         
     });
 

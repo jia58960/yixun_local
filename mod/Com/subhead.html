@@ -1,6 +1,6 @@
 <h3 class="page-title">
 
-	<%=data.module_name%> <small><%=data.module_des%></small>
+	 <!-- <%=data.module_name%> -->测试大标题<small>对dashboard内容的简要描述<!-- <%=data.module_des%> --></small>
 
 </h3>
 
@@ -10,16 +10,25 @@
 
 		<i class="icon-home"></i>
 
-		<a href="index.html">Home</a> 
+		<a href="index.html">我的工作台</a> 
 
 		<i class="icon-angle-right"></i>
 
 	</li>
+
+	<li><a href="#">一级菜单</a>
+			<i class="icon-angle-right"></i>
+	</li>
+
+	<li><a href="#">二级菜单</a>
+			<i class="icon-angle-right"></i>
+	</li>
+
 	<% for (var i = 0, l = data.module_nav.length; i < l; i++) { %>
 
-		<li><a href="<%=data.module_nav[i].nav_url%>"><%=data.module_nav[i].nav_name%></a>
+		<!-- <li><a href="<%=data.module_nav[i].nav_url%>"><%=data.module_nav[i].nav_name%></a>
 			<i class="icon-angle-right"></i>
-		</li>
+		</li> -->
 
 	<% } %>
 

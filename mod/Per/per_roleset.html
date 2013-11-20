@@ -20,13 +20,11 @@
 							
 							<div class="controls" id="roleList">
 
-								
+								<label class="checkbox">
 
-									<label class="checkbox">
+									<input type="checkbox" value="" id="checkAll">全选
 
-										<input type="checkbox" value="">全选
-
-									</label>
+								</label>
 							
 							</div>
 							
@@ -46,9 +44,7 @@
 						
 						<div class="form-actions">
 
-							<button class="btn blue" id="perAddBtn">添加权限</button>
-
-							<button class="btn red" id="perRemoveBtn">解除权限</button>                            
+							<button class="btn blue" id="perAddBtn">确定</button>
 
 						</div>	
 					
@@ -70,43 +66,43 @@
 	        handleUniform();
 	        var urljasonfix = eval(urlfix);
 	        //角色列表
-	        if(!urljasonfix.roleList){
-
-	            urljasonfix.roleList =
-	            [{
-	                "ra":"roleList",
-	                "dir":"Com/rolelist",
-	                "dif":'permission/listAllRoles',
-	                "m":2
-	                }
-	            ];            
-	        }
+            urljasonfix.roleList =
+            [{
+                "ra":"roleList",
+                "dir":"Com/rolelist",
+                "dif":'permission/listAllRoles',
+                "m":2
+                }
+            ];            
+	        
 	        yixunload(urljasonfix.roleList,urlfix);
 	        
 	        //权限列表
-	        if(!urljasonfix.perList){
-
-	            urljasonfix.perList =
-	            [{
-	                "ra":"perList",
-	                "dir":"Set/BI/perlist",
-	                "dif":'resource/listMenus',
-	                "p":{"resourceTypeId":"1"},
-	                "m":2
-	                }
-	            ];            
-	        }
+            urljasonfix.perList =
+            [{
+                "ra":"perList",
+                "dir":"Set/BI/perlist",
+                "dif":'resource/listMenus',
+                "p":{"resourceTypeId":"1"},
+                "m":2
+            }]; 
+                       
 	        yixunload(urljasonfix.perList,urlfix);
+
+	        //全选角色
+	        $("#roleCheckAll").click(function(){
+	        	$(this).parents("label").siblings().find("input[type='checkbox']").attr('checked', $(this).is(':checked'))
+	        })
 
 	        //绑定
 	        $("#perAddBtn").click(function(){
-	        	alert('123');
+	        	//alert('123');
 		     	$('#rolePageForm').submit(function() {
 			        var data = $(this).serialize(); //序列化表单数据 
 			        console.log(data);
 			        //return false;
 			        $.getJSON(
-			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/addPermissionsToRoles?jsoncallback=?",data,
+			            processingUrl+"permission/savePagesToRoles?jsoncallback=?",data,
 			            function(json) {
 			            	console.log(json);
 			            	//return false;
@@ -120,29 +116,6 @@
 		 	
 			});        
 
-	        //解除
-	        $("#perRemoveBtn").click(function(){
-		     	$('#rolePageForm').submit(function() {
-			        var data = $(this).serialize(); //序列化表单数据 
-			        console.log(data);
-			        //return false;
-			        $.getJSON(
-			            "http://10.188.192.200:8080/YIXUN_1.5_EE/permission/deletePermissionsFromRoles?jsoncallback=?",data,
-			            function(json) {
-			            	console.log(json);
-			            	if(json.resultCode){
-				            	App.ajaxblockUI(json.resultCode,json.resultReason,setTimeout($.unblockUI, 2000));
-			            	}
-			            }
-			        ); 
-			        return false; 
-			    }); 
-		 	
-			});
-	        
-
-
-		 
 		});
 
 	</script>

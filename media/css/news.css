@@ -27,8 +27,8 @@ News Page
   border-top: solid 2px #faf6ea;
 }
 
-.news-blocks:hover {
-  background: #fff;
+.news-blocks{
+  
   border-color: #78cff8;
   transition: all 0.4s ease-in-out 0s;
   -moz-transition: all 0.4s ease-in-out 0s;
